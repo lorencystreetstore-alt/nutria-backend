@@ -1,0 +1,16 @@
+Arquivo: .gitignore
+
+Ensina o GitHub a ignorar pastas temporárias ou segredos locais
+
+node_modules/
+.netlify/
+
+Ignorar o arquivo onde você poderia testar variáveis ambiente localmente (.env)
+
+.env
+.env.local
+
+Ignorar lixos do sistema operacional
+
+.DS_Store
+Thumbs.db

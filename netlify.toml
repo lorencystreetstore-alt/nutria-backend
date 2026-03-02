@@ -1,0 +1,24 @@
+# Arquivo: netlify.toml
+# Diz ao Netlify como rodar o site e aplicar cabeçalhos de segurança (Headers).
+
+[build]
+  # Como não estamos usando React ou Vue, a pasta base é a própria raiz "."
+  publish = "."
+  # Avisa ao Netlify onde estão os arquivos de Back-end (Serverless Functions)
+  functions = "netlify/functions"
+
+[[headers]]
+  # Aplica regras de segurança a TODAS as páginas do site
+  for = "/*"
+  [headers.values]
+    # Impede que invasores coloquem seu site dentro de iframes falsos (Clickjacking)
+    X-Frame-Options = "DENY"
+    
+    # Bloqueia carregamento de scripts mal-intencionados injetados
+    X-XSS-Protection = "1; mode=block"
+    
+    # Impede que o navegador "adivinhe" tipos de arquivos
+    X-Content-Type-Options = "nosniff"
+    
+    # Exige conexão HTTPS sempre
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
