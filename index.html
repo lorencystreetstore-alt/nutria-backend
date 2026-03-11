@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutria - MealPrep Inteligente e Saudável</title>
-    
-    <!-- Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Configuração de Cores -->
     <script>
         tailwind.config = {
             theme: {
@@ -38,13 +36,13 @@
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <div class="bg-white p-2 md:p-3 rounded-2xl shadow-lg border-[3px] border-nutriaGreen">
-                    <!-- LOGO AUMENTADA EM 30%: h-[83px] no mobile, h-[104px] no desktop -->
                     <img src="LOGO-NUTRIA.png" alt="Logo Nutria" class="h-[79px] md:h-[79px] w-auto object-contain">
                 </div>
             </div>
             <div class="hidden md:flex gap-6 font-semibold items-center">
                 <a href="#cardapio" class="hover:text-nutriaGreen transition">Cardápio da Semana</a>
                 <a href="#estoque" class="hover:text-nutriaGreen transition">Estoque</a>
+                <a href="#blog" class="hover:text-nutriaGreen transition">Blog</a>
                 <a href="#pedido" class="bg-nutriaGreen text-nutriaBlue px-6 py-2 rounded-full hover:bg-[#7ab135] hover:scale-105 transition shadow-md">Fazer Pedido</a>
             </div>
             <div class="md:hidden">
@@ -62,6 +60,7 @@
                 <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-lg">Toda semana lançamos 2 lotes de sabores exclusivos para o seu MealPrep. Saudável, prático e delicioso.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                     <a href="#cardapio" class="bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold py-4 px-8 rounded-full text-lg transition duration-300 shadow-[0_0_20px_rgba(137,197,63,0.4)] text-center transform hover:-translate-y-1">Ver Cardápio</a>
+                    <a href="#pedido" class="bg-transparent hover:bg-white/10 border-2 border-white text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center">Fazer Pedido</a>
                 </div>
             </div>
         </div>
@@ -73,8 +72,9 @@
             <span class="text-nutriaGreen font-black text-sm uppercase tracking-widest">Fresquinho</span>
             <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Lançamentos da Semana</h2>
             <div class="w-24 h-1 bg-nutriaGreen mx-auto mt-6 rounded-full"></div>
+            <p class="text-gray-500 mt-4 text-lg">Nossos 2 lotes exclusivos produzidos fresquinhos para esta semana!</p>
         </div>
-        <div id="grid-novidades" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 max-w-5xl mx-auto"></div>
+        <div id="grid-novidades" class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto"></div>
     </section>
 
     <!-- Estoque -->
@@ -84,10 +84,37 @@
                 <span class="text-nutriaBlue font-black text-sm uppercase tracking-widest">Pronta Entrega</span>
                 <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Disponíveis em Estoque</h2>
                 <div class="w-24 h-1 bg-nutriaBlue mx-auto mt-6 rounded-full"></div>
+                <p class="text-gray-500 mt-4 text-lg">Perdeu os lotes anteriores? Ainda temos algumas unidades disponíveis para envio imediato!</p>
             </div>
             <div id="grid-estoque" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"></div>
         </div>
     </section>
+
+    <!-- SESSÃO DO BLOG -->
+    <section id="blog" class="py-20 container mx-auto px-4 relative">
+        <div class="text-center mb-16">
+            <span class="text-nutriaGreen font-black text-sm uppercase tracking-widest">Conteúdo</span>
+            <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Blog Nutria</h2>
+            <div class="w-24 h-1 bg-nutriaGreen mx-auto mt-6 rounded-full"></div>
+            <p class="text-gray-500 mt-4 text-lg">Dicas de saúde, nutrição e aproveitamento do seu MealPrep.</p>
+        </div>
+
+        <div id="grid-blog" class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            <!-- Os artigos serão injetados aqui via Javascript -->
+        </div>
+    </section>
+
+    <!-- MODAL DO BLOG -->
+    <div id="modal-blog" class="fixed inset-0 bg-[#081E3F]/90 z-[100] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <div id="modal-content" class="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl relative flex flex-col">
+            <!-- Botão Fechar -->
+            <button onclick="fecharArtigo()" class="absolute top-4 right-4 bg-white text-gray-500 hover:text-red-500 hover:bg-red-50 p-2 rounded-full shadow-md z-10 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+            </button>
+            <!-- Conteúdo Injetado via JS -->
+            <div id="modal-body" class="w-full"></div>
+        </div>
+    </div>
 
     <!-- Sessão de Pedido -->
     <section id="pedido" class="py-20 bg-nutriaBlue text-white border-t-8 border-nutriaGreen relative overflow-hidden">
@@ -133,6 +160,7 @@
                             <select id="cliente-pagamento" class="w-full px-4 py-3 bg-[#0c254c] border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-nutriaGreen transition">
                                 <option value="PIX">PIX (Chave enviada no WhatsApp)</option>
                                 <option value="Cartão de Crédito na Entrega">Cartão de Crédito (Na entrega)</option>
+                                <option value="Cartão de Débito na Entrega">Cartão de Débito (Na entrega)</option>
                                 <option value="Dinheiro">Dinheiro (Preciso de troco)</option>
                             </select>
                         </div>
@@ -142,7 +170,10 @@
                         </div>
 
                         <!-- BOTÃO ATUALIZADO PARA CONEXÃO COM O SERVIDOR -->
-                        <button type="button" id="btn-enviar" onclick="enviarPedidoSeguro()" class="w-full bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold text-lg py-4 rounded-xl mt-8 transition-all flex justify-center items-center gap-3">
+                        <button type="button" id="btn-enviar" onclick="enviarPedidoSeguro()" class="w-full bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold text-lg py-4 rounded-xl mt-8 transition-all flex justify-center items-center gap-3 shadow-[0_4px_14px_0_rgba(137,197,63,0.39)]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                            </svg>
                             Enviar Pedido via WhatsApp
                         </button>
                     </form>
@@ -160,19 +191,59 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // No front-end, o array serve apenas para EXIBIÇÃO na tela.
-        // O servidor não confia nestes preços, ele calcula usando a própria tabela de preços oculta.
+        // ========================================================
+        // 1. DADOS DOS PRODUTOS (VITRINE)
+        // O servidor tem a própria tabela oculta de preços para segurança
+        // ========================================================
         const semanaLotes = [
             { id: 'nov-1', nome: 'Strogonoff de Frango c/ Mandioquinha', descricao: 'Rico em proteínas, sabor equilibrado.', preco: 18.90, imagem: 'MarmitasFOTOS/STROGONOFF-FRANGO.png' },
             { id: 'nov-2', nome: 'Escondidinho de Carne Moída', descricao: 'Clássico e saudável. Pré/pós treino.', preco: 18.90, imagem: 'MarmitasFOTOS/ESCONDIDINHO-CARNE.png' }
         ];
 
         const estoqueLotes = [
-            { id: 'est-1', nome: 'Karê de Frango com Arroz Japonês', descricao: 'Prato Oriental. Apenas 7 unidades!', preco: 23.90, imagem: 'MarmitasFOTOS/KARE-FRANGO.png' },
-            { id: 'est-2', nome: 'Lasanha de Pernil com Brócolis', descricao: 'Refeição leve e nutritiva.', preco: 18.90, imagem: 'MarmitaFOTOS/LASANHA.png' }
+            { id: 'est-1', nome: 'Karê de Frango com Arroz Japonês', descricao: 'Prato Oriental. Apenas 7 unidades!', preco: 25.90, imagem: 'MarmitasFOTOS/KARE-FRANGO.png' },
+            { id: 'est-2', nome: 'Tilápia Grelhada com Legumes', descricao: 'Refeição leve e nutritiva.', preco: 29.90, imagem: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' }
         ];
 
-        let carrinho = {}; // { 'id-do-produto': quantidade }
+        // ========================================================
+        // 2. DADOS DO BLOG
+        // ========================================================
+        const artigosBlog = [
+            {
+                id: 'art-1',
+                tag: 'Saúde & Rotina',
+                titulo: '5 Benefícios do Meal Prep para sua Produtividade',
+                resumo: 'Descubra como planejar suas refeições pode não apenas salvar sua dieta, mas também te dar horas a mais na semana...',
+                imagem: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                conteudo: `
+                    <p class="mb-5 text-lg text-gray-600">O Meal Prep (preparação de refeições) não é apenas uma moda do mundo fitness; é uma ferramenta poderosa de gestão de tempo.</p>
+                    <h4 class="text-xl font-bold text-nutriaBlue mb-3">1. Economia Real de Tempo</h4>
+                    <p class="mb-5 text-gray-600">Em vez de passar 1 hora por dia na cozinha, você abre a geladeira e sua refeição Nutria está pronta em 3 minutos.</p>
+                    <div class="bg-nutriaLight p-6 rounded-xl border-l-4 border-nutriaGreen my-6">
+                        <p class="font-bold text-nutriaBlue italic">"A organização da nossa alimentação reflete diretamente na organização da nossa vida."</p>
+                    </div>
+                `
+            },
+            {
+                id: 'art-2',
+                tag: 'Dicas Práticas',
+                titulo: 'Como aquecer suas marmitas sem perder o sabor',
+                resumo: 'O segredo para um frango suculento e legumes crocantes mesmo depois de descongelados.',
+                imagem: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                conteudo: `
+                    <p class="mb-5 text-lg text-gray-600">O segredo está puramente na técnica da hora de aquecer!</p>
+                    <ul class="list-none space-y-4 mb-6">
+                        <li class="flex gap-3 items-start">
+                            <span class="bg-nutriaGreen text-white w-6 h-6 rounded-full flex items-center justify-center font-bold flex-shrink-0 mt-1">1</span>
+                            <p class="text-gray-600"><strong>No Micro-ondas:</strong> Remova a tampa para o vapor sair. Aqueça por 6 minutos, misture levemente e aqueça por mais 1 minuto.</p>
+                        </li>
+                    </ul>
+                `
+            }
+        ];
+
+        // Lógica de Renderização de Produtos e Carrinho
+        let carrinho = {};
         const todosProdutos = [...semanaLotes, ...estoqueLotes];
         const formataMoeda = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
@@ -184,14 +255,17 @@
                     <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col border border-gray-100 group">
                         <div class="relative h-56 overflow-hidden">
                             <img src="${p.imagem}" alt="${p.nome}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                            <div class="absolute top-4 left-4 ${badgeCor} text-white text-xs font-bold px-4 py-1.5 rounded-full z-10">${badgeTexto}</div>
+                            <div class="absolute top-4 left-4 ${badgeCor} text-white text-xs font-bold px-4 py-1.5 rounded-full z-10 shadow-md uppercase tracking-wider backdrop-blur-sm">${badgeTexto}</div>
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-extrabold text-nutriaBlue mb-2">${p.nome}</h3>
-                            <p class="text-gray-500 text-sm mb-6 flex-grow">${p.descricao}</p>
+                            <h3 class="text-xl font-extrabold text-nutriaBlue mb-2 leading-tight">${p.nome}</h3>
+                            <p class="text-gray-500 text-sm mb-6 flex-grow line-clamp-2">${p.descricao}</p>
                             <div class="flex justify-between items-end">
-                                <div><span class="text-3xl font-black text-nutriaGreen">${formataMoeda(p.preco)}</span></div>
-                                <button onclick="adicionarAoCarrinho('${p.id}')" class="bg-nutriaBlue text-white font-bold rounded-xl px-5 py-3 hover:bg-nutriaGreen transition">Add</button>
+                                <div>
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1 tracking-wider">Por apenas</p>
+                                    <span class="text-3xl font-black text-nutriaGreen leading-none block">${formataMoeda(p.preco)}</span>
+                                </div>
+                                <button onclick="adicionarAoCarrinho('${p.id}')" class="bg-nutriaBlue text-white font-bold rounded-xl px-5 py-3 hover:bg-nutriaGreen transition shadow-md transform hover:-translate-y-1">Add</button>
                             </div>
                         </div>
                     </div>`;
@@ -222,9 +296,9 @@
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="flex items-center bg-gray-50 border rounded-lg p-1">
-                                <button onclick="removerDoCarrinho('${id}')" class="w-7 h-7 text-gray-500 hover:bg-red-50">-</button>
+                                <button onclick="removerDoCarrinho('${id}')" class="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-red-500 hover:bg-red-50 rounded-md font-bold transition">-</button>
                                 <span class="w-6 text-sm font-black text-center">${qtde}</span>
-                                <button onclick="adicionarAoCarrinho('${id}')" class="w-7 h-7 text-gray-500 hover:bg-green-50">+</button>
+                                <button onclick="adicionarAoCarrinho('${id}')" class="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-md font-bold transition">+</button>
                             </div>
                             <span class="font-black text-sm text-right text-nutriaBlue">${formataMoeda(p.preco * qtde)}</span>
                         </div>
@@ -232,6 +306,58 @@
             }
             placeholder.classList.toggle('hidden', Object.keys(carrinho).length > 0);
             document.getElementById('valor-total').textContent = formataMoeda(total);
+        }
+
+        // ========================================================
+        // 3. LÓGICA DO BLOG (Renderização e Modal)
+        // ========================================================
+        function renderizarBlog() {
+            const container = document.getElementById('grid-blog');
+            container.innerHTML = '';
+            artigosBlog.forEach(artigo => {
+                container.innerHTML += `
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer group hover:-translate-y-2 transition-transform duration-300 border border-gray-100" onclick="abrirArtigo('${artigo.id}')">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="${artigo.imagem}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-nutriaGreen uppercase tracking-wider">${artigo.tag}</span>
+                            <h3 class="text-xl font-extrabold text-nutriaBlue mt-2 mb-3 group-hover:text-nutriaGreen transition">${artigo.titulo}</h3>
+                            <p class="text-gray-500 text-sm line-clamp-3">${artigo.resumo}</p>
+                            <span class="text-sm font-bold text-nutriaBlue mt-4 inline-block group-hover:text-nutriaGreen transition">Ler artigo completo →</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        renderizarBlog();
+
+        function abrirArtigo(id) {
+            const artigo = artigosBlog.find(a => a.id === id);
+            if(artigo) {
+                document.getElementById('modal-body').innerHTML = `
+                    <img src="${artigo.imagem}" class="w-full h-64 object-cover rounded-t-3xl">
+                    <div class="p-8">
+                        <span class="text-sm font-bold text-nutriaGreen uppercase tracking-wider">${artigo.tag}</span>
+                        <h2 class="text-3xl font-extrabold text-nutriaBlue mt-2 mb-6">${artigo.titulo}</h2>
+                        <div class="text-gray-700 space-y-4 leading-relaxed">${artigo.conteudo}</div>
+                    </div>
+                `;
+                const modal = document.getElementById('modal-blog');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+            }
+        }
+
+        function fecharArtigo() {
+            const modal = document.getElementById('modal-blog');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
         }
 
         // ==========================================
@@ -253,7 +379,6 @@
             btn.classList.add("opacity-70", "cursor-not-allowed");
 
             try {
-                // Envia apenas o que o cliente comprou, não os preços
                 const response = await fetch('/.netlify/functions/gerarPedido', {
                     method: 'POST',
                     body: JSON.stringify({ carrinho, nome, endereco, pagamento, obs })
@@ -262,7 +387,7 @@
                 const data = await response.json();
 
                 if (data.url) {
-                    window.open(data.url, '_blank'); // Abre o WhatsApp gerado pelo servidor
+                    window.open(data.url, '_blank');
                 } else {
                     alert("Erro ao gerar pedido.");
                 }
