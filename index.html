@@ -5,39 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutria - MealPrep Inteligente e Saudável</title>
     
-    <!-- Tailwind CSS para estilização rápida e responsiva -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Fonte Google: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Configuração de Cores da Marca Nutria -->
+
+    <!-- Configuração de Cores -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        nutriaBlue: '#081E3F',
-                        nutriaGreen: '#89C53F',
-                        nutriaLight: '#F3F8EC'
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                    }
+                    colors: { nutriaBlue: '#081E3F', nutriaGreen: '#89C53F', nutriaLight: '#F3F8EC' },
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] }
                 }
             }
         }
     </script>
 
     <style>
-        /* Estilos adicionais suaves */
         html { scroll-behavior: smooth; }
         .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-        .bg-hero { 
-            background-image: linear-gradient(to right, rgba(8, 30, 63, 0.95), rgba(8, 30, 63, 0.7)), url('https://images.unsplash.com/photo-1498837167922-41cfa6f310f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); 
-            background-size: cover; 
-            background-position: center; 
+        .bg-hero {
+            background-image: linear-gradient(to right, rgba(8, 30, 63, 0.95), rgba(8, 30, 63, 0.7)), url('https://images.unsplash.com/photo-1498837167922-41cfa6f310f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-position: center;
         }
     </style>
 </head>
@@ -46,28 +36,20 @@
     <!-- Navegação -->
     <nav class="bg-nutriaBlue text-white sticky top-0 z-50 shadow-md">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-
-            <!-- ÁREA DA LOGO (CORRIGIDA E SEGURA) -->
             <div class="flex items-center">
                 <div class="bg-white p-2 md:p-3 rounded-2xl shadow-lg border-[3px] border-nutriaGreen">
-                    <!-- h-16 (mobile) e h-20 (desktop) garante que a imagem fica num tamanho perfeito sem quebrar a tela -->
-                    <img src="LOGO-NUTRIA.png" alt="Logo Nutria" class="h-16 md:h-20 w-auto object-contain">
+                    <!-- LOGO AUMENTADA EM 30%: h-[83px] no mobile, h-[104px] no desktop -->
+                    <img src="LOGO-NUTRIA.png" alt="Logo Nutria" class="h-[79px] md:h-[79px] w-auto object-contain">
                 </div>
             </div>
-
-            <!-- LINKS DO MENU DESKTOP -->
             <div class="hidden md:flex gap-6 font-semibold items-center">
                 <a href="#cardapio" class="hover:text-nutriaGreen transition">Cardápio da Semana</a>
                 <a href="#estoque" class="hover:text-nutriaGreen transition">Estoque</a>
-                <a href="#blog" class="hover:text-nutriaGreen transition">Blog</a>
-                <a href="#pedido" class="bg-nutriaGreen text-nutriaBlue px-6 py-2 rounded-full hover:bg-[#7ab135] hover:scale-105 transition transform shadow-md">Fazer Pedido</a>
+                <a href="#pedido" class="bg-nutriaGreen text-nutriaBlue px-6 py-2 rounded-full hover:bg-[#7ab135] hover:scale-105 transition shadow-md">Fazer Pedido</a>
             </div>
-
-            <!-- BOTÃO MOBILE -->
             <div class="md:hidden">
                 <a href="#pedido" class="bg-nutriaGreen text-nutriaBlue px-5 py-2 rounded-full font-bold text-sm shadow-md">Pedir</a>
             </div>
-
         </div>
     </nav>
 
@@ -80,154 +62,89 @@
                 <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-lg">Toda semana lançamos 2 lotes de sabores exclusivos para o seu MealPrep. Saudável, prático e delicioso.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                     <a href="#cardapio" class="bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold py-4 px-8 rounded-full text-lg transition duration-300 shadow-[0_0_20px_rgba(137,197,63,0.4)] text-center transform hover:-translate-y-1">Ver Cardápio</a>
-                    <a href="#pedido" class="bg-transparent hover:bg-white/10 border-2 border-white text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center">Fazer Pedido</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Cardápio - Novidades da Semana -->
+    <!-- Cardápio - Lançamentos -->
     <section id="cardapio" class="py-20 container mx-auto px-4">
         <div class="text-center mb-16">
             <span class="text-nutriaGreen font-black text-sm uppercase tracking-widest">Fresquinho</span>
             <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Lançamentos da Semana</h2>
             <div class="w-24 h-1 bg-nutriaGreen mx-auto mt-6 rounded-full"></div>
-            <p class="text-gray-500 mt-4 text-lg">Nossos 2 lotes exclusivos produzidos fresquinhos para esta semana!</p>
         </div>
-
-        <div id="grid-novidades" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            <!-- Os itens serão injetados aqui via JavaScript -->
-        </div>
+        <div id="grid-novidades" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 max-w-5xl mx-auto"></div>
     </section>
 
-    <!-- Cardápio - Estoque (Sobras) -->
+    <!-- Estoque -->
     <section id="estoque" class="py-20 bg-gray-100 border-t border-gray-200">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-nutriaBlue font-black text-sm uppercase tracking-widest">Pronta Entrega</span>
                 <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Disponíveis em Estoque</h2>
                 <div class="w-24 h-1 bg-nutriaBlue mx-auto mt-6 rounded-full"></div>
-                <p class="text-gray-500 mt-4 text-lg">Perdeu os lotes anteriores? Ainda temos algumas unidades disponíveis para envio imediato!</p>
             </div>
-
-            <div id="grid-estoque" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Os itens serão injetados aqui via JavaScript -->
-            </div>
+            <div id="grid-estoque" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"></div>
         </div>
     </section>
 
-    <!-- SESSÃO DO BLOG -->
-    <section id="blog" class="py-20 container mx-auto px-4 relative">
-        <div class="text-center mb-16">
-            <span class="text-nutriaGreen font-black text-sm uppercase tracking-widest">Conteúdo</span>
-            <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Blog Nutria</h2>
-            <div class="w-24 h-1 bg-nutriaGreen mx-auto mt-6 rounded-full"></div>
-            <p class="text-gray-500 mt-4 text-lg">Dicas de saúde, nutrição e aproveitamento do seu MealPrep.</p>
-        </div>
-        <!-- Os artigos serão injetados aqui via Javascript -->
-        <div id="grid-blog" class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto"></div>
-    </section>
-
-    <!-- MODAL DO BLOG (A janela pop-up escondida responsiva) -->
-    <div id="modal-blog" class="fixed inset-0 bg-[#081E3F]/90 z-[100] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-        <!-- Caixa responsiva com scroll interno (overflow-y-auto) -->
-        <div id="modal-content" class="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300 relative flex flex-col">
-            <!-- Botão Fechar -->
-            <button onclick="fecharArtigo()" class="absolute top-4 right-4 bg-white text-gray-500 hover:text-red-500 hover:bg-red-50 p-2 rounded-full shadow-md z-10 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-            </button>
-            <!-- Conteúdo Injetado via JS -->
-            <div id="modal-body" class="w-full"></div>
-        </div>
-    </div>
-
-    <!-- Sessão de Pedido (Formulário + Carrinho) -->
+    <!-- Sessão de Pedido -->
     <section id="pedido" class="py-20 bg-nutriaBlue text-white border-t-8 border-nutriaGreen relative overflow-hidden">
-        <!-- Decorativo de fundo -->
-        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-72 h-72 bg-nutriaGreen opacity-10 rounded-full blur-3xl pointer-events-none"></div>
-
         <div class="container mx-auto px-4 max-w-6xl relative z-10">
             <div class="text-center mb-16">
-                <span class="text-nutriaGreen font-black text-sm uppercase tracking-widest">Fácil e Rápido</span>
                 <h2 class="text-4xl font-extrabold text-white mt-2">Finalize seu Pedido</h2>
                 <div class="w-24 h-1 bg-nutriaGreen mx-auto mt-6 rounded-full"></div>
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                
+
                 <!-- Resumo do Carrinho -->
                 <div class="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-2 bg-nutriaGreen"></div>
-                    <h3 class="text-2xl font-extrabold text-nutriaBlue border-b-2 border-gray-100 pb-4 mb-6 flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-nutriaGreen" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-                        </svg>
-                        Seu Pedido
-                    </h3>
-                    
+                    <h3 class="text-2xl font-extrabold text-nutriaBlue border-b-2 border-gray-100 pb-4 mb-6">Seu Pedido</h3>
+
                     <div id="carrinho-vazio" class="text-gray-400 text-center py-12 flex flex-col items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mb-4 opacity-30" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
-                        </svg>
                         <p class="font-semibold text-lg">Seu carrinho está vazio.</p>
-                        <p class="text-sm mt-1">Adicione itens deliciosos do nosso cardápio!</p>
                     </div>
-                    
-                    <ul id="lista-carrinho" class="space-y-4 mb-8">
-                        <!-- Itens do carrinho aparecem aqui -->
-                    </ul>
-                    
+
+                    <ul id="lista-carrinho" class="space-y-4 mb-8"></ul>
+
                     <div class="border-t-2 border-dashed border-gray-200 pt-6 flex justify-between items-end mt-auto">
                         <span class="text-lg font-bold text-gray-500 uppercase tracking-wide">Total a Pagar</span>
                         <span id="valor-total" class="text-4xl font-black text-nutriaGreen tracking-tight">R$ 0,00</span>
                     </div>
                 </div>
 
-                <!-- Formulário de Dados -->
-                <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 shadow-xl">
-                    <h3 class="text-2xl font-extrabold text-white mb-8 flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-nutriaGreen" viewBox="0 0 16 16">
-                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
-                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                        </svg>
-                        Dados de Entrega
-                    </h3>
+                <!-- Formulário -->
+                <div class="bg-white/5 p-8 rounded-2xl border border-white/10 shadow-xl">
+                    <h3 class="text-2xl font-extrabold text-white mb-8">Dados de Entrega</h3>
                     <form id="form-pedido" class="space-y-5">
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Seu Nome Completo</label>
-                            <input type="text" id="cliente-nome" required class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-nutriaGreen focus:border-transparent transition" placeholder="Ex: Maria Silva">
+                            <input type="text" id="cliente-nome" required class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-nutriaGreen transition" placeholder="Ex: Maria Silva">
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Endereço de Entrega Completo</label>
-                            <textarea id="cliente-endereco" required rows="3" class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-nutriaGreen focus:border-transparent transition" placeholder="Rua, Número, Bairro, Complemento..."></textarea>
+                            <textarea id="cliente-endereco" required rows="3" class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-nutriaGreen transition" placeholder="Rua, Número, Bairro..."></textarea>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Forma de Pagamento</label>
-                            <div class="relative">
-                                <select id="cliente-pagamento" class="w-full px-4 py-3 bg-[#0c254c] border border-gray-600 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-nutriaGreen focus:border-transparent transition appearance-none">
-                                    <option value="PIX">PIX (Chave enviada no WhatsApp)</option>
-                                    <option value="Cartão de Crédito na Entrega">Cartão de Crédito (Na entrega)</option>
-                                    <option value="Cartão de Débito na Entrega">Cartão de Débito (Na entrega)</option>
-                                    <option value="Dinheiro">Dinheiro (Preciso de troco)</option>
-                                </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                                </div>
-                            </div>
+                            <select id="cliente-pagamento" class="w-full px-4 py-3 bg-[#0c254c] border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-nutriaGreen transition">
+                                <option value="PIX">PIX (Chave enviada no WhatsApp)</option>
+                                <option value="Cartão de Crédito na Entrega">Cartão de Crédito (Na entrega)</option>
+                                <option value="Dinheiro">Dinheiro (Preciso de troco)</option>
+                            </select>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Observações (Opcional)</label>
-                            <input type="text" id="cliente-obs" class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-nutriaGreen focus:border-transparent transition" placeholder="Ex: Sem cebola, por favor!">
+                            <input type="text" id="cliente-obs" class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-nutriaGreen transition" placeholder="Ex: Sem cebola, por favor!">
                         </div>
-                        
-                        <button type="button" onclick="enviarPedidoWhatsApp()" class="w-full bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold text-lg py-4 rounded-xl mt-8 shadow-[0_4px_14px_0_rgba(137,197,63,0.39)] hover:shadow-[0_6px_20px_rgba(137,197,63,0.23)] hover:-translate-y-1 transition-all duration-300 flex justify-center items-center gap-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                            </svg>
+
+                        <!-- BOTÃO ATUALIZADO PARA CONEXÃO COM O SERVIDOR -->
+                        <button type="button" id="btn-enviar" onclick="enviarPedidoSeguro()" class="w-full bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold text-lg py-4 rounded-xl mt-8 transition-all flex justify-center items-center gap-3">
                             Enviar Pedido via WhatsApp
                         </button>
-                        <p class="text-xs text-center text-gray-300 mt-3 font-medium">Você será redirecionado para o WhatsApp para confirmar seu pedido conosco.</p>
                     </form>
                 </div>
             </div>
@@ -237,270 +154,126 @@
     <!-- Footer -->
     <footer class="bg-[#051124] text-gray-400 py-8 text-center">
         <p>&copy; <span id="year"></span> Nutria MealPrep. Todos os direitos reservados.</p>
-        <p class="text-sm mt-2">Saúde, praticidade e sustentabilidade na sua mesa.</p>
     </footer>
 
-    <!-- LÓGICA DO SISTEMA (JAVASCRIPT) -->
+    <!-- LÓGICA DO FRONT-END -->
     <script>
-        // Atualize o ano do rodapé
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // =========================================================================
-        // ÁREA DE ATUALIZAÇÃO DO CARDÁPIO (ATUALIZE ESTES DADOS TODA SEMANA)
-        // =========================================================================
-
-        // 1. Lotes da Semana (Novidades)
+        // No front-end, o array serve apenas para EXIBIÇÃO na tela.
+        // O servidor não confia nestes preços, ele calcula usando a própria tabela de preços oculta.
         const semanaLotes = [
-            {
-                id: 'nov-1',
-                nome: 'Strogonoff de Frango com Creme de Mandioquinha',
-                descricao: 'Rico em proteínas, sabor equilibrado. Bem temperado.',
-                preco: 18.90,
-                imagem: 'MarmitasFOTOS/STROGONOFF-FRANGO.png'
-            },
-            {
-                id: 'nov-2',
-                nome: 'Escondidinho de Carne Moída',
-                descricao: 'Um clássico e saudável. Ideal para o pré/pós treino.',
-                preco: 18.90,
-                imagem: 'MarmitasFOTOS/ESCONDIDINHO-CARNE.png'
-            }
+            { id: 'nov-1', nome: 'Strogonoff de Frango c/ Mandioquinha', descricao: 'Rico em proteínas, sabor equilibrado.', preco: 18.90, imagem: 'MarmitasFOTOS/STROGONOFF-FRANGO.png' },
+            { id: 'nov-2', nome: 'Escondidinho de Carne Moída', descricao: 'Clássico e saudável. Pré/pós treino.', preco: 18.90, imagem: 'MarmitasFOTOS/ESCONDIDINHO-CARNE.png' }
         ];
 
-        // 2. Estoque (Lotes anteriores)
         const estoqueLotes = [
-            {
-                id: 'est-1',
-                nome: 'Karê de Frango com Arroz Japonês',
-                descricao: 'Prato de Origem Oriental, Gohan: arroz japonês, sem vinagre (su). Lote 22/02/2026. Apenas 7 unidades!',
-                preco: 25.90,
-                imagem: 'MarmitasFOTOS/KARE-FRANGO.png'
-            },
-            {
-                id: 'est-2',
-                nome: 'Tilápia Grelhada com Mix de Legumes',
-                descricao: 'Refeição leve e nutritiva. Últimas unidades no estoque.',
-                preco: 29.90,
-                imagem: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-            },
-            {
-                id: 'est-3',
-                nome: 'Panqueca Integral de Carne',
-                descricao: 'Massa fina e recheio suculento. Congelamento perfeito.',
-                preco: 25.50,
-                imagem: 'https://images.unsplash.com/photo-1615486171431-155fc3067e4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-            }
+            { id: 'est-1', nome: 'Karê de Frango com Arroz Japonês', descricao: 'Prato Oriental. Apenas 7 unidades!', preco: 23.90, imagem: 'MarmitasFOTOS/KARE-FRANGO.png' },
+            { id: 'est-2', nome: 'Lasanha de Pernil com Brócolis', descricao: 'Refeição leve e nutritiva.', preco: 18.90, imagem: 'MarmitaFOTOS/LASANHA.png' }
         ];
-
-        // CONFIGURAÇÃO DO SEU WHATSAPP (Apenas números, inclua DDD)
-        const numeroWhatsApp = "5519974239183";
-
-        // 3. ARTIGOS DO BLOG
-        const artigosBlog = [
-            {
-                id: 'art-1',
-                tag: 'Saúde & Rotina',
-                titulo: '5 Benefícios do Meal Prep para sua Produtividade',
-                resumo: 'Descubra como planejar suas refeições pode não apenas salvar sua dieta, mas também te dar horas a mais na semana...',
-                imagem: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                conteudo: `
-                    <p class="mb-5 text-lg text-gray-600">O Meal Prep (preparação de refeições) não é apenas uma moda do mundo fitness; é uma ferramenta poderosa de gestão de tempo para pessoas ocupadas.</p>
-                    <h4 class="text-xl font-bold text-nutriaBlue mb-3">1. Economia Real de Tempo</h4>
-                    <p class="mb-5 text-gray-600">Em vez de passar 1 hora por dia na cozinha, você abre a geladeira e sua refeição Nutria está pronta em 3 minutos.</p>
-                    <h4 class="text-xl font-bold text-nutriaBlue mb-3">2. Foco Total no seu Trabalho</h4>
-                    <p class="mb-5 text-gray-600">Sabe aquela interrupção de "o que vou almoçar hoje?". Com marmitas balanceadas, sua mente fica livre para produzir muito mais.</p>
-                    <div class="bg-nutriaLight p-6 rounded-xl border-l-4 border-nutriaGreen my-6">
-                        <p class="font-bold text-nutriaBlue italic">"A organização da nossa alimentação reflete diretamente na organização da nossa vida."</p>
-                    </div>
-                `
-            },
-            {
-                id: 'art-2',
-                tag: 'Dicas Práticas',
-                titulo: 'Como aquecer suas marmitas sem perder o sabor',
-                resumo: 'O segredo para um frango suculento e legumes crocantes mesmo depois de descongelados. Veja o passo a passo...',
-                imagem: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                conteudo: `
-                    <p class="mb-5 text-lg text-gray-600">Muita gente acha que comida congelada perde o sabor, mas o segredo está puramente na técnica da hora de aquecer!</p>
-                    <ul class="list-none space-y-4 mb-6">
-                        <li class="flex gap-3 items-start">
-                            <span class="bg-nutriaGreen text-white w-6 h-6 rounded-full flex items-center justify-center font-bold flex-shrink-0 mt-1">1</span>
-                            <p class="text-gray-600"><strong>No Micro-ondas:</strong> Remova a tampa para o vapor sair. Aqueça por 6 minutos, pause, misture os alimentos levemente e aqueça por mais 1 minuto.</p>
-                        </li>
-                        <li class="flex gap-3 items-start">
-                            <span class="bg-nutriaGreen text-white w-6 h-6 rounded-full flex items-center justify-center font-bold flex-shrink-0 mt-1">2</span>
-                            <p class="text-gray-600"><strong>O Truque da Água:</strong> Antes de aquecer, borrife umas 3 gotas de água sobre o arroz. O vapor gerado vai fazer com que ele volte a ficar soltinho!</p>
-                        </li>
-                    </ul>
-                `
-            }
-        ];
-
-        // =========================================================================
-        // FIM DA ÁREA DE ATUALIZAÇÃO - NÃO PRECISA MEXER NO CÓDIGO ABAIXO
-        // =========================================================================
 
         let carrinho = {}; // { 'id-do-produto': quantidade }
         const todosProdutos = [...semanaLotes, ...estoqueLotes];
+        const formataMoeda = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-        // Função para formatar moeda
-        const formataMoeda = (valor) => {
-            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        };
-
-        // Função para renderizar os cards na tela
         function renderizarProdutos(lista, containerId, badgeTexto, badgeCor) {
             const container = document.getElementById(containerId);
-            container.innerHTML = ''; // Limpa
-
-            lista.forEach(produto => {
-                const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl shadow-lg overflow-hidden card-hover flex flex-col border border-gray-100 group";
-                card.innerHTML = `
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="${produto.imagem}" alt="[Imagem de ${produto.nome}]" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute top-4 left-4 ${badgeCor} text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md uppercase tracking-wider z-10 backdrop-blur-sm">
-                            ${badgeTexto}
+            container.innerHTML = '';
+            lista.forEach(p => {
+                container.innerHTML += `
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col border border-gray-100 group">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="${p.imagem}" alt="${p.nome}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 ${badgeCor} text-white text-xs font-bold px-4 py-1.5 rounded-full z-10">${badgeTexto}</div>
                         </div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow relative bg-white">
-                        <h3 class="text-xl font-extrabold text-nutriaBlue mb-2 leading-tight">${produto.nome}</h3>
-                        <p class="text-gray-500 text-sm mb-6 flex-grow line-clamp-2">${produto.descricao}</p>
-                        <div class="flex justify-between items-end mt-auto pt-5 border-t border-gray-100">
-                            <div>
-                                <p class="text-[10px] text-gray-400 font-bold uppercase mb-1 tracking-wider">Por apenas</p>
-                                <span class="text-3xl font-black text-nutriaGreen leading-none block">${formataMoeda(produto.preco)}</span>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-extrabold text-nutriaBlue mb-2">${p.nome}</h3>
+                            <p class="text-gray-500 text-sm mb-6 flex-grow">${p.descricao}</p>
+                            <div class="flex justify-between items-end">
+                                <div><span class="text-3xl font-black text-nutriaGreen">${formataMoeda(p.preco)}</span></div>
+                                <button onclick="adicionarAoCarrinho('${p.id}')" class="bg-nutriaBlue text-white font-bold rounded-xl px-5 py-3 hover:bg-nutriaGreen transition">Add</button>
                             </div>
-                            <button onclick="adicionarAoCarrinho('${produto.id}')" class="bg-nutriaBlue hover:bg-nutriaGreen text-white font-bold rounded-xl px-5 py-3 flex items-center gap-2 transition-all shadow-md transform hover:-translate-y-1 active:scale-95 group-hover:shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
-                                </svg>
-                                <span class="hidden sm:inline">Add</span>
-                            </button>
                         </div>
-                    </div>
-                `;
-                container.appendChild(card);
+                    </div>`;
             });
         }
 
-        // Inicializa a vitrine
         renderizarProdutos(semanaLotes, 'grid-novidades', 'Novo Lote ✨', 'bg-nutriaGreen/90 text-nutriaBlue');
         renderizarProdutos(estoqueLotes, 'grid-estoque', 'Em Estoque 📦', 'bg-[#081E3F]/90 text-white');
 
-        // Lógica do Carrinho
-        function adicionarAoCarrinho(id) {
-            if (carrinho[id]) {
-                carrinho[id]++;
-            } else {
-                carrinho[id] = 1;
-            }
-            atualizarUI_Carrinho();
-            
-            // Pequeno feedback visual (scrola um pouco para mostrar que adicionou, opcional)
-            // alert('Item adicionado ao seu pedido!');
-        }
+        function adicionarAoCarrinho(id) { carrinho[id] = (carrinho[id] || 0) + 1; atualizarUI(); }
+        function removerDoCarrinho(id) { if (carrinho[id]) { carrinho[id]--; if (carrinho[id] === 0) delete carrinho[id]; atualizarUI(); } }
 
-        function removerDoCarrinho(id) {
-            if (carrinho[id]) {
-                carrinho[id]--;
-                if (carrinho[id] === 0) delete carrinho[id];
-            }
-            atualizarUI_Carrinho();
-        }
-
-        function atualizarUI_Carrinho() {
-            const listaCarrinho = document.getElementById('lista-carrinho');
+        function atualizarUI() {
+            const lista = document.getElementById('lista-carrinho');
             const placeholder = document.getElementById('carrinho-vazio');
-            const totalElement = document.getElementById('valor-total');
-            
-            listaCarrinho.innerHTML = '';
+            lista.innerHTML = '';
             let total = 0;
-            let temItens = false;
 
             for (const [id, qtde] of Object.entries(carrinho)) {
-                temItens = true;
-                const produto = todosProdutos.find(p => p.id === id);
-                if (!produto) continue;
-
-                const subtotal = produto.preco * qtde;
-                total += subtotal;
-
-                const itemHTML = document.createElement('li');
-                itemHTML.className = "flex justify-between items-center border-b border-gray-100 pb-3";
-                itemHTML.innerHTML = `
-                    <div class="flex-grow pr-3">
-                        <p class="font-extrabold text-sm text-nutriaBlue leading-tight">${produto.nome}</p>
-                        <p class="text-xs text-gray-400 mt-1 font-medium">${formataMoeda(produto.preco)} cada</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg p-1">
-                            <button onclick="removerDoCarrinho('${id}')" class="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-red-500 hover:bg-red-50 rounded-md font-bold transition">-</button>
-                            <span class="w-6 text-sm font-black text-center text-nutriaBlue">${qtde}</span>
-                            <button onclick="adicionarAoCarrinho('${id}')" class="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-md font-bold transition">+</button>
+                const p = todosProdutos.find(p => p.id === id);
+                if (!p) continue;
+                total += p.preco * qtde;
+                lista.innerHTML += `
+                    <li class="flex justify-between items-center border-b border-gray-100 pb-3">
+                        <div class="flex-grow pr-3">
+                            <p class="font-extrabold text-sm text-nutriaBlue">${p.nome}</p>
+                            <p class="text-xs text-gray-400 mt-1">${formataMoeda(p.preco)} cada</p>
                         </div>
-                        <span class="font-black text-sm min-w-[70px] text-right text-nutriaBlue">${formataMoeda(subtotal)}</span>
-                    </div>
-                `;
-                listaCarrinho.appendChild(itemHTML);
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center bg-gray-50 border rounded-lg p-1">
+                                <button onclick="removerDoCarrinho('${id}')" class="w-7 h-7 text-gray-500 hover:bg-red-50">-</button>
+                                <span class="w-6 text-sm font-black text-center">${qtde}</span>
+                                <button onclick="adicionarAoCarrinho('${id}')" class="w-7 h-7 text-gray-500 hover:bg-green-50">+</button>
+                            </div>
+                            <span class="font-black text-sm text-right text-nutriaBlue">${formataMoeda(p.preco * qtde)}</span>
+                        </div>
+                    </li>`;
             }
-
-            if (temItens) {
-                placeholder.classList.add('hidden');
-            } else {
-                placeholder.classList.remove('hidden');
-            }
-
-            totalElement.textContent = formataMoeda(total);
+            placeholder.classList.toggle('hidden', Object.keys(carrinho).length > 0);
+            document.getElementById('valor-total').textContent = formataMoeda(total);
         }
 
-        // Geração da Mensagem de WhatsApp
-        function enviarPedidoWhatsApp() {
+        // ==========================================
+        // COMUNICAÇÃO SEGURA COM O BACKEND (NETLIFY FUNCTION)
+        // ==========================================
+        async function enviarPedidoSeguro() {
             const nome = document.getElementById('cliente-nome').value.trim();
             const endereco = document.getElementById('cliente-endereco').value.trim();
             const pagamento = document.getElementById('cliente-pagamento').value;
             const obs = document.getElementById('cliente-obs').value.trim();
 
-            // Validação Básica
-            if (Object.keys(carrinho).length === 0) {
-                alert("Por favor, adicione itens ao carrinho antes de enviar.");
-                return;
-            }
-            if (!nome || !endereco) {
-                alert("Por favor, preencha seu nome e endereço para entrega.");
-                return;
-            }
+            if (Object.keys(carrinho).length === 0) return alert("Carrinho vazio!");
+            if (!nome || !endereco) return alert("Preencha nome e endereço!");
 
-            // Monta a mensagem
-            let mensagem = `Olá equipe *NUTRIA*! 🌱\nGostaria de fazer um pedido:\n\n*RESUMO DO PEDIDO:*\n`;
-            let totalPedido = 0;
+            const btn = document.getElementById('btn-enviar');
+            const btnHtml = btn.innerHTML;
+            btn.innerHTML = "Calculando e Gerando Link...";
+            btn.disabled = true;
+            btn.classList.add("opacity-70", "cursor-not-allowed");
 
-            for (const [id, qtde] of Object.entries(carrinho)) {
-                const produto = todosProdutos.find(p => p.id === id);
-                if (produto) {
-                    mensagem += `▸ ${qtde}x ${produto.nome} (${formataMoeda(produto.preco * qtde)})\n`;
-                    totalPedido += (produto.preco * qtde);
+            try {
+                // Envia apenas o que o cliente comprou, não os preços
+                const response = await fetch('/.netlify/functions/gerarPedido', {
+                    method: 'POST',
+                    body: JSON.stringify({ carrinho, nome, endereco, pagamento, obs })
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    window.open(data.url, '_blank'); // Abre o WhatsApp gerado pelo servidor
+                } else {
+                    alert("Erro ao gerar pedido.");
                 }
+            } catch (error) {
+                alert("Erro de conexão. Tente novamente.");
+            } finally {
+                btn.innerHTML = btnHtml;
+                btn.disabled = false;
+                btn.classList.remove("opacity-70", "cursor-not-allowed");
             }
-
-            mensagem += `\n*VALOR TOTAL:* ${formataMoeda(totalPedido)}\n\n`;
-            mensagem += `*DADOS DE ENTREGA:*\n`;
-            mensagem += `Nome: ${nome}\n`;
-            mensagem += `Endereço: ${endereco}\n`;
-            mensagem += `Forma de Pagamento: ${pagamento}\n`;
-            
-            if (obs) {
-                mensagem += `Observações: ${obs}\n`;
-            }
-
-            mensagem += `\nAguardando confirmação! Obrigado!`;
-
-            // Codifica para URL e abre
-            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-            window.open(url, '_blank');
         }
-
     </script>
 </body>
 </html>
