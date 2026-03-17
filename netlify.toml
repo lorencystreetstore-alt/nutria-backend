@@ -22,3 +22,9 @@
     
     # Exige conexão HTTPS sempre
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+#Regra de segurança opcional: Permite que o frontend comunique com o backend corretamente
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

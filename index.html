@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutria - MealPrep Inteligente e Saudável</title>
 
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 
+    <!-- Configuração de Cores -->
     <script>
         tailwind.config = {
             theme: {
@@ -22,11 +24,17 @@
     <style>
         html { scroll-behavior: smooth; }
         .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
         .bg-hero {
             background-image: linear-gradient(to right, rgba(8, 30, 63, 0.95), rgba(8, 30, 63, 0.7)), url('https://images.unsplash.com/photo-1498837167922-41cfa6f310f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
             background-size: cover; background-position: center;
         }
+
+        /* Ajustes para textos longos (Scrollbar elegante) */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="bg-[#F8FAFC] text-gray-800 font-sans">
@@ -36,17 +44,17 @@
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <div class="bg-white p-2 md:p-3 rounded-2xl shadow-lg border-[3px] border-nutriaGreen">
-                    <img src="LOGO-NUTRIA.png" alt="Logo Nutria" class="h-[79px] md:h-[79px] w-auto object-contain">
+                    <img src="LOGO-NUTRIA.png" alt="Logo Nutria" class="h-[60px] md:h-[70px] w-auto object-contain" onerror="this.src='https://placehold.co/100x100/081E3F/89C53F?text=N'">
                 </div>
             </div>
-            <div class="hidden md:flex gap-6 font-semibold items-center">
-                <a href="#cardapio" class="hover:text-nutriaGreen transition">Cardápio da Semana</a>
-                <a href="#estoque" class="hover:text-nutriaGreen transition">Estoque</a>
-                <a href="#blog" class="hover:text-nutriaGreen transition">Blog</a>
-                <a href="#pedido" class="bg-nutriaGreen text-nutriaBlue px-6 py-2 rounded-full hover:bg-[#7ab135] hover:scale-105 transition shadow-md">Fazer Pedido</a>
+            <div class="hidden md:flex gap-8 font-semibold items-center text-sm">
+                <a href="#kits" class="hover:text-nutriaGreen transition">Kits Mensais</a>
+                <a href="#cardapio" class="hover:text-nutriaGreen transition">Cardápio Completo</a>
+                <a href="#blog" class="hover:text-nutriaGreen transition">Conteúdos</a>
+                <a href="#pedido" class="bg-nutriaGreen text-nutriaBlue px-6 py-2.5 rounded-full hover:bg-[#7ab135] hover:scale-105 transition shadow-md font-bold">Ver Carrinho</a>
             </div>
             <div class="md:hidden">
-                <a href="#pedido" class="bg-nutriaGreen text-nutriaBlue px-5 py-2 rounded-full font-bold text-sm shadow-md">Pedir</a>
+                <a href="#pedido" class="bg-nutriaGreen text-nutriaBlue px-5 py-2 rounded-full font-bold text-sm shadow-md">Carrinho</a>
             </div>
         </div>
     </nav>
@@ -55,69 +63,60 @@
     <header class="bg-hero py-20 md:py-32 border-b-4 border-nutriaGreen">
         <div class="container mx-auto px-4 text-center md:text-left flex flex-col md:flex-row items-center gap-10">
             <div class="md:w-2/3 lg:w-1/2">
-                <span class="inline-block py-1 px-3 rounded-full bg-nutriaGreen/20 text-nutriaGreen font-bold text-sm tracking-widest uppercase mb-4 border border-nutriaGreen/50">Otimize sua semana</span>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">Comida de verdade,<br>pronta para a sua <span class="text-nutriaGreen">rotina.</span></h1>
-                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-lg">Toda semana lançamos 2 lotes de sabores exclusivos para o seu MealPrep. Saudável, prático e delicioso.</p>
+                <span class="inline-block py-1 px-4 rounded-full bg-nutriaGreen/20 text-nutriaGreen font-bold text-xs tracking-widest uppercase mb-4 border border-nutriaGreen/50">Nutrição Inteligente</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">Sabor de chef,<br>macros de <span class="text-nutriaGreen">atleta.</span></h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-lg font-light">Porções super bem servidas (aprox. 360g~400g). Releituras saudáveis dos seus pratos favoritos com informações nutricionais transparentes para você atingir seus objetivos.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="#cardapio" class="bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold py-4 px-8 rounded-full text-lg transition duration-300 shadow-[0_0_20px_rgba(137,197,63,0.4)] text-center transform hover:-translate-y-1">Ver Cardápio</a>
-                    <a href="#pedido" class="bg-transparent hover:bg-white/10 border-2 border-white text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center">Fazer Pedido</a>
+                    <a href="#kits" class="bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold py-4 px-8 rounded-full text-lg transition duration-300 shadow-[0_0_20px_rgba(137,197,63,0.4)] text-center transform hover:-translate-y-1">Ver Kits Promocionais</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Cardápio - Lançamentos -->
-    <section id="cardapio" class="py-20 container mx-auto px-4">
-        <div class="text-center mb-16">
-            <span class="text-nutriaGreen font-black text-sm uppercase tracking-widest">Fresquinho</span>
-            <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Lançamentos da Semana</h2>
-            <div class="w-24 h-1 bg-nutriaGreen mx-auto mt-6 rounded-full"></div>
-            <p class="text-gray-500 mt-4 text-lg">Nossos 2 lotes exclusivos produzidos fresquinhos para esta semana!</p>
-        </div>
-        <div id="grid-novidades" class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto"></div>
-    </section>
-
-    <!-- Estoque -->
-    <section id="estoque" class="py-20 bg-gray-100 border-t border-gray-200">
+    <!-- SESSÃO DE KITS -->
+    <section id="kits" class="py-20 bg-white border-b border-gray-100">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <span class="text-nutriaBlue font-black text-sm uppercase tracking-widest">Pronta Entrega</span>
-                <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Disponíveis em Estoque</h2>
-                <div class="w-24 h-1 bg-nutriaBlue mx-auto mt-6 rounded-full"></div>
-                <p class="text-gray-500 mt-4 text-lg">Perdeu os lotes anteriores? Ainda temos algumas unidades disponíveis para envio imediato!</p>
+                <span class="text-nutriaGreen font-black text-sm uppercase tracking-widest">Economia e Praticidade</span>
+                <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Kits Nutria</h2>
+                <div class="w-24 h-1 bg-nutriaGreen mx-auto mt-6 rounded-full mb-4"></div>
+                <p class="text-gray-500 text-lg">Garanta a dieta da semana ou do mês inteiro com valores especiais.</p>
             </div>
-            <div id="grid-estoque" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"></div>
+
+            <div id="grid-kits" class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Renderizado via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cardápio Completo -->
+    <section id="cardapio" class="py-24 container mx-auto px-4">
+        <div class="text-center mb-16">
+            <span class="text-nutriaGreen font-black text-sm uppercase tracking-widest">Escolha a dedo</span>
+            <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Cardápio Avulso</h2>
+            <div class="w-24 h-1 bg-nutriaBlue mx-auto mt-6 rounded-full mb-4"></div>
+            <p class="text-gray-500 text-lg">Clique em qualquer prato para ver a história e a tabela nutricional completa.</p>
+        </div>
+
+        <div id="grid-cardapio" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Renderizado via JS -->
         </div>
     </section>
 
     <!-- SESSÃO DO BLOG -->
-    <section id="blog" class="py-20 container mx-auto px-4 relative">
+    <section id="blog" class="py-20 container mx-auto px-4 relative bg-gray-50 border-t border-gray-200">
         <div class="text-center mb-16">
-            <span class="text-nutriaGreen font-black text-sm uppercase tracking-widest">Conteúdo</span>
+            <span class="text-nutriaGreen font-black text-sm uppercase tracking-widest">Conteúdo & Dicas</span>
             <h2 class="text-4xl font-extrabold text-nutriaBlue mt-2">Blog Nutria</h2>
             <div class="w-24 h-1 bg-nutriaGreen mx-auto mt-6 rounded-full"></div>
-            <p class="text-gray-500 mt-4 text-lg">Dicas de saúde, nutrição e aproveitamento do seu MealPrep.</p>
+            <p class="text-gray-500 mt-4 text-lg">Tudo o que você precisa saber para potencializar sua saúde e rotina.</p>
         </div>
-
-        <div id="grid-blog" class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            <!-- Os artigos serão injetados aqui via Javascript -->
-        </div>
+        <div id="grid-blog" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"></div>
     </section>
-
-    <!-- MODAL DO BLOG -->
-    <div id="modal-blog" class="fixed inset-0 bg-[#081E3F]/90 z-[100] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-        <div id="modal-content" class="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl relative flex flex-col">
-            <!-- Botão Fechar -->
-            <button onclick="fecharArtigo()" class="absolute top-4 right-4 bg-white text-gray-500 hover:text-red-500 hover:bg-red-50 p-2 rounded-full shadow-md z-10 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-            </button>
-            <!-- Conteúdo Injetado via JS -->
-            <div id="modal-body" class="w-full"></div>
-        </div>
-    </div>
 
     <!-- Sessão de Pedido -->
     <section id="pedido" class="py-20 bg-nutriaBlue text-white border-t-8 border-nutriaGreen relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl pointer-events-none"></div>
         <div class="container mx-auto px-4 max-w-6xl relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-extrabold text-white mt-2">Finalize seu Pedido</h2>
@@ -125,14 +124,15 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-
                 <!-- Resumo do Carrinho -->
                 <div class="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-2 bg-nutriaGreen"></div>
-                    <h3 class="text-2xl font-extrabold text-nutriaBlue border-b-2 border-gray-100 pb-4 mb-6">Seu Pedido</h3>
+                    <h3 class="text-2xl font-extrabold text-nutriaBlue border-b-2 border-gray-100 pb-4 mb-6">Seu Carrinho</h3>
 
                     <div id="carrinho-vazio" class="text-gray-400 text-center py-12 flex flex-col items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="mb-4 opacity-30" viewBox="0 0 16 16"><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/></svg>
                         <p class="font-semibold text-lg">Seu carrinho está vazio.</p>
+                        <p class="text-sm mt-1">Adicione os deliciosos pratos ou kits!</p>
                     </div>
 
                     <ul id="lista-carrinho" class="space-y-4 mb-8"></ul>
@@ -144,37 +144,37 @@
                 </div>
 
                 <!-- Formulário -->
-                <div class="bg-white/5 p-8 rounded-2xl border border-white/10 shadow-xl">
+                <div class="bg-white/5 p-8 rounded-2xl border border-white/10 shadow-xl backdrop-blur-sm">
                     <h3 class="text-2xl font-extrabold text-white mb-8">Dados de Entrega</h3>
                     <form id="form-pedido" class="space-y-5">
                         <div>
                             <label class="block text-sm font-semibold text-gray-300 mb-2">Seu Nome Completo</label>
-                            <input type="text" id="cliente-nome" required class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-nutriaGreen transition" placeholder="Ex: Maria Silva">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-300 mb-2">Endereço de Entrega Completo</label>
-                            <textarea id="cliente-endereco" required rows="3" class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-nutriaGreen transition" placeholder="Rua, Número, Bairro..."></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-300 mb-2">Forma de Pagamento</label>
-                            <select id="cliente-pagamento" class="w-full px-4 py-3 bg-[#0c254c] border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-nutriaGreen transition">
-                                <option value="PIX">PIX (Chave enviada no WhatsApp)</option>
-                                <option value="Cartão de Crédito na Entrega">Cartão de Crédito (Na entrega)</option>
-                                <option value="Cartão de Débito na Entrega">Cartão de Débito (Na entrega)</option>
-                                <option value="Dinheiro">Dinheiro (Preciso de troco)</option>
-                                <option value="Criptomoedas">Criptomoedas (USDT, BTC, etc - via WhatsApp)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-300 mb-2">Observações de logística(Entrega/Retirada)</label>
-                            <input type="text" id="cliente-obs" class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-nutriaGreen transition" placeholder="Seus Horários para receber/retirar a encomenda.">
+                            <input type="text" id="cliente-nome" required class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-nutriaGreen transition outline-none" placeholder="Ex: Maria Silva">
                         </div>
 
-                        <!-- BOTÃO ATUALIZADO PARA CONEXÃO COM O SERVIDOR -->
-                        <button type="button" id="btn-enviar" onclick="enviarPedidoSeguro()" class="w-full bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold text-lg py-4 rounded-xl mt-8 transition-all flex justify-center items-center gap-3 shadow-[0_4px_14px_0_rgba(137,197,63,0.39)]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                            </svg>
+                        <!-- NOVO CAMPO: CEP COM AUTO-PREENCHIMENTO -->
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="col-span-1">
+                                <label class="block text-sm font-semibold text-gray-300 mb-2">CEP</label>
+                                <input type="text" id="cliente-cep" maxlength="9" onblur="buscarCEP()" class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-nutriaGreen transition outline-none" placeholder="00000-000">
+                            </div>
+                            <div class="col-span-2">
+                                <label class="block text-sm font-semibold text-gray-300 mb-2">Forma de Pagamento</label>
+                                <select id="cliente-pagamento" class="w-full px-4 py-3 bg-[#0c254c] border border-gray-600 rounded-xl text-white focus:ring-2 focus:ring-nutriaGreen transition outline-none">
+                                    <option value="PIX">PIX (Chave enviada no WhatsApp)</option>
+                                    <option value="Cartão de Crédito na Entrega">Cartão de Crédito (Na entrega)</option>
+                                    <option value="Dinheiro">Dinheiro (Preciso de troco)</option>
+                                    <option value="Criptomoedas">Criptomoedas (Bitcoin, USDT, etc. via WPP)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-300 mb-2">Endereço de Entrega Completo (Rua, Número, Bairro)</label>
+                            <textarea id="cliente-endereco" required rows="3" class="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-nutriaGreen transition outline-none" placeholder="Rua..., Número..., Complemento..."></textarea>
+                        </div>
+
+                        <button type="button" id="btn-enviar" onclick="enviarPedidoSeguro()" class="w-full bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold text-lg py-4 rounded-xl mt-8 transition-all flex justify-center items-center gap-3">
                             Enviar Pedido via WhatsApp
                         </button>
                     </form>
@@ -184,222 +184,521 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#051124] text-gray-400 py-8 text-center">
+    <footer class="bg-[#051124] text-gray-400 py-8 text-center border-t border-gray-800">
         <p>&copy; <span id="year"></span> Nutria MealPrep. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- LÓGICA DO FRONT-END -->
+    <!-- ========================================== -->
+    <!-- MODALS (POP-UPS ESCONDIDOS) -->
+    <!-- ========================================== -->
+
+    <!-- Modal do Prato (Cardápio) -->
+    <div id="modal-prato" class="fixed inset-0 bg-[#081E3F]/95 z-[100] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-md transition-opacity duration-300 opacity-0">
+        <div id="modal-prato-content" class="bg-white rounded-3xl w-full max-w-4xl max-h-[95vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300 relative flex flex-col">
+            <button onclick="fecharModal('modal-prato')" class="absolute top-4 right-4 bg-white/90 backdrop-blur text-gray-800 hover:text-red-500 hover:bg-red-50 p-3 rounded-full shadow-lg z-20 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+            </button>
+            <div id="modal-prato-body" class="w-full flex flex-col"></div>
+        </div>
+    </div>
+
+    <!-- Modal do Kit (Montagem de Sabores) -->
+    <div id="modal-kit" class="fixed inset-0 bg-[#081E3F]/95 z-[100] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-md transition-opacity duration-300 opacity-0">
+        <div id="modal-kit-content" class="bg-white rounded-3xl w-full max-w-2xl max-h-[95vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300 relative flex flex-col">
+            <button onclick="fecharModal('modal-kit')" class="absolute top-4 right-4 bg-gray-100 text-gray-600 hover:text-red-500 hover:bg-red-50 p-3 rounded-full shadow-sm z-20 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+            </button>
+            <div id="modal-kit-body" class="p-8 w-full flex flex-col"></div>
+        </div>
+    </div>
+
+    <!-- Modal do Blog -->
+    <div id="modal-blog" class="fixed inset-0 bg-[#081E3F]/95 z-[100] hidden items-center justify-center p-4 sm:p-6 backdrop-blur-md transition-opacity duration-300 opacity-0">
+        <div id="modal-blog-content" class="bg-white rounded-3xl w-full max-w-4xl max-h-[95vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300 relative flex flex-col">
+            <button onclick="fecharModal('modal-blog')" class="absolute top-4 right-4 bg-white/90 backdrop-blur text-gray-800 hover:text-red-500 hover:bg-red-50 p-3 rounded-full shadow-lg z-20 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+            </button>
+            <div id="modal-blog-body" class="w-full flex flex-col"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-nutriaGreen text-nutriaBlue font-bold px-6 py-3 rounded-full shadow-2xl z-[200] transition-all duration-300 opacity-0 pointer-events-none translate-y-10">
+        <span id="toast-msg">✅ Item adicionado ao carrinho!</span>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- LÓGICA DO SISTEMA (DADOS E INTERAÇÕES) -->
+    <!-- ========================================== -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // ========================================================
-        // 1. DADOS DOS PRODUTOS (VITRINE)
-        // O servidor tem a própria tabela oculta de preços para segurança
-        // ========================================================
-        const semanaLotes = [
-            { id: 'nov-1', nome: 'Strogonoff de Frango c/ Mandioquinha', descricao: 'Rico em proteínas, sabor equilibrado.', preco: 18.90, imagem: 'MarmitasFOTOS/STROGONOFF-FRANGO.png' },
-            { id: 'nov-2', nome: 'Escondidinho de Carne Moída', descricao: 'Clássico e saudável. Pré/pós treino.', preco: 18.90, imagem: 'MarmitasFOTOS/ESCONDIDINHO-CARNE.png' }
+        // ------------------------------------------
+        // 1. DADOS DO CARDÁPIO UNIFICADO (R$ 20.90 / ~400g)
+        // ------------------------------------------
+        const cardapioCompleto = [
+            {
+                id: 'marmita-1',
+                nome: 'Strogonoff de Frango c/ Mandioquinha',
+                descricao: 'Rico em proteínas, sabor equilibrado e textura perfeita.',
+                preco: 20.90,
+                peso: 'Aprox. 360g ~ 400g',
+                imagem: 'MarmitasFOTOS/STROGONOFF-FRANGO.png',
+                prontaEntrega: true,
+                historia: 'Uma releitura saudável e inteligente do clássico que os brasileiros amam. Substituímos o tradicional e pesado creme de leite por um aveludado creme de mandioquinha natural, rico em fibras e de baixo índice glicêmico. Você consome todo o sabor e conforto de um strogonoff, mas mantendo a dieta alinhada e as gorduras sob controle.',
+                nutricao: { kcal: 320, proteina: 35, carbo: 28, gordura: 8 }
+            },
+            {
+                id: 'marmita-2',
+                nome: 'Escondidinho de Patinho com Batata Doce',
+                descricao: 'Clássico e saudável. O carboidrato perfeito para o pré/pós treino.',
+                preco: 20.90,
+                peso: 'Aprox. 360g ~ 400g',
+                imagem: 'MarmitasFOTOS/ESCONDIDINHO-CARNE.png',
+                prontaEntrega: false,
+                historia: 'Desenvolvido pensando na performance. O patinho é uma das carnes mais magras disponíveis, entregando um alto valor biológico de proteínas. Para contrastar, um purê rústico de batata doce (carboidrato complexo) que libera energia gradualmente ao longo do dia. Temperado com ervas frescas e gratinado levemente.',
+                nutricao: { kcal: 345, proteina: 32, carbo: 35, gordura: 9 }
+            },
+            {
+                id: 'marmita-3',
+                nome: 'Karê de Frango com Arroz Japonês (Gohan)',
+                descricao: 'A explosão de sabor oriental com temperos termogênicos.',
+                preco: 20.90,
+                peso: 'Aprox. 360g ~ 400g',
+                imagem: 'MarmitasFOTOS/KARE-FRANGO.png',
+                prontaEntrega: true,
+                historia: 'Nossa homenagem ao outro lado do mundo! O Karê é o tradicional curry japonês. Nossa versão leva peito de frango em cubos marinados, cenoura, batata e maçã (o segredo do molho oriental!). Servido ao lado do autêntico Gohan (arroz de grão curto), preparado sem vinagre ou açúcar para preservar a pureza nutricional. Uma refeição reconfortante e levemente termogênica graças ao curry.',
+                nutricao: { kcal: 380, proteina: 30, carbo: 45, gordura: 11 }
+            },
+            {
+                id: 'marmita-4',
+                nome: 'Lasanha de Pernil com Brócolis',
+                descricao: 'Lasanha funcional de massa fina, focada no alto teor de proteína.',
+                preco: 20.90,
+                peso: 'Aprox. 360g ~ 400g',
+                imagem: 'MarmitaFOTOS/LASANHA.png',
+                prontaEntrega: false,
+                historia: 'Quem disse que não se pode comer lasanha na dieta? Utilizamos uma massa super fina focada apenas em estruturar o prato. O protagonismo fica com o pernil suíno magro e desfiado (uma carne muito subestimada, mas riquíssima em vitaminas do complexo B) combinado com brócolis fresco cozido no vapor e um molho de tomate 100% artesanal, sem conservantes.',
+                nutricao: { kcal: 410, proteina: 38, carbo: 22, gordura: 14 }
+            }
         ];
 
-        const estoqueLotes = [
-            { id: 'est-1', nome: 'Karê de Frango com Arroz Japonês', descricao: 'Prato Oriental. Apenas 7 unidades!', preco: 23.90, imagem: 'MarmitasFOTOS/KARE-FRANGO.png' },
-            { id: 'est-2', nome: 'Lasanha de Pernil com Brócolis e Queijo', descricao: 'Refeição leve e nutritiva.', preco: 18.90, imagem: 'MarmitasFOTOS/LASANHA.png' }
+        // ------------------------------------------
+        // 2. DADOS DOS KITS (Combos Promocionais)
+        // ------------------------------------------
+        const kitsData = [
+            {
+                id: 'kit-14', nome: 'Kit 14 Marmitas', preco: 245.00,
+                descricao: 'Ideal para 2 semanas garantidas. (Lotes de 5/5/4 sabores)',
+                regras: [5, 5, 4]
+            },
+            {
+                id: 'kit-20', nome: 'Kit 20 Marmitas', preco: 330.00,
+                descricao: 'Almoço e Jantar para a semana toda. (Lotes de 5 sabores)',
+                regras: [5, 5, 5, 5]
+            },
+            {
+                id: 'kit-30', nome: 'Kit 30 Marmitas', preco: 490.00,
+                descricao: 'O mês completo de evolução garantida. (Lotes de 5 sabores)',
+                regras: [5, 5, 5, 5, 5, 5]
+            }
         ];
 
-        // ========================================================
-        // 2. DADOS DO BLOG
-        // ========================================================
+        // ------------------------------------------
+        // 3. DADOS DO BLOG
+        // ------------------------------------------
         const artigosBlog = [
             {
-                id: 'art-1',
-                tag: 'Saúde & Rotina',
-                titulo: '5 Benefícios do Meal Prep para sua Produtividade',
-                resumo: 'Descubra como planejar suas refeições pode não apenas salvar sua dieta, mas também te dar horas a mais na semana...',
-                imagem: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                id: 'art-1', tag: 'Produtividade', data: '10 Mar 2026', tempoLeitura: '3 min',
+                titulo: '5 Benefícios do Meal Prep para sua Produtividade Diária',
+                resumo: 'Descubra como o planejamento de refeições pode salvar a sua dieta e te dar horas extras.',
+                imagem: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
                 conteudo: `
-                    <p class="mb-5 text-lg text-gray-600">O Meal Prep (preparação de refeições) não é apenas uma moda do mundo fitness; é uma ferramenta poderosa de gestão de tempo.</p>
-                    <h4 class="text-xl font-bold text-nutriaBlue mb-3">1. Economia Real de Tempo</h4>
-                    <p class="mb-5 text-gray-600">Em vez de passar 1 hora por dia na cozinha, você abre a geladeira e sua refeição Nutria está pronta em 3 minutos.</p>
-                    <div class="bg-nutriaLight p-6 rounded-xl border-l-4 border-nutriaGreen my-6">
-                        <p class="font-bold text-nutriaBlue italic">"A organização da nossa alimentação reflete diretamente na organização da nossa vida."</p>
+                    <p>O Meal Prep (preparação inteligente de refeições) não é apenas uma moda do mundo fitness; é uma ferramenta poderosa de gestão de tempo para pessoas ocupadas e que desejam manter a saúde em dia.</p>
+                    <h4 class="text-2xl font-bold text-nutriaBlue mt-8 mb-4">1. Economia Real de Tempo</h4>
+                    <p>Você já parou para calcular quanto tempo gasta pensando no que comer, cozinhando e lavando a louça todos os dias? Com o Meal Prep, você abre a geladeira e sua refeição Nutria está pronta em 3 minutos.</p>
+                    <div class="bg-nutriaLight p-8 rounded-2xl border-l-4 border-nutriaGreen my-8 shadow-sm">
+                        <p class="font-bold text-nutriaBlue italic text-xl !mb-0">"A organização da nossa alimentação reflete diretamente na organização e no sucesso da nossa rotina diária."</p>
                     </div>
                 `
             },
             {
-                id: 'art-2',
-                tag: 'Dicas Práticas',
-                titulo: 'Como aquecer suas marmitas sem perder o sabor',
-                resumo: 'O segredo para um frango suculento e legumes crocantes mesmo depois de descongelados.',
-                imagem: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                id: 'art-2', tag: 'Dicas Práticas', data: '02 Mar 2026', tempoLeitura: '2 min',
+                titulo: 'O Segredo: Como aquecer marmitas e manter o sabor fresco',
+                resumo: 'Aprenda o truque simples para manter o frango suculento e o arroz soltinho após descongelar.',
+                imagem: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
                 conteudo: `
-                    <p class="mb-5 text-lg text-gray-600">O segredo está puramente na técnica da hora de aquecer!</p>
-                    <ul class="list-none space-y-4 mb-6">
-                        <li class="flex gap-3 items-start">
-                            <span class="bg-nutriaGreen text-white w-6 h-6 rounded-full flex items-center justify-center font-bold flex-shrink-0 mt-1">1</span>
-                            <p class="text-gray-600"><strong>No Micro-ondas:</strong> Remova a tampa para o vapor sair. Aqueça por 6 minutos, misture levemente e aqueça por mais 1 minuto.</p>
-                        </li>
-                    </ul>
+                    <p>Muitas pessoas ainda têm a falsa ideia de que comida congelada perde o sabor. A verdade é que o segredo está na técnica de aquecimento!</p>
+                    <h4 class="text-2xl font-bold text-nutriaBlue mt-8 mb-4">Técnica 1: O Aquecimento em Etapas</h4>
+                    <p>Nunca coloque 5 minutos direto no micro-ondas. O ideal é: abrir levemente a tampa para sair o vapor, aquecer por 3 min, retirar, misturar os alimentos e aquecer por mais 1 a 2 minutos.</p>
+                    <p><em>Importante: Nossas embalagens são 100% seguras, livres de BPA e próprias para ir direto do freezer para o micro-ondas.</em></p>
                 `
             }
         ];
 
-        // Lógica de Renderização de Produtos e Carrinho
-        let carrinho = {};
-        const todosProdutos = [...semanaLotes, ...estoqueLotes];
         const formataMoeda = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-        function renderizarProdutos(lista, containerId, badgeTexto, badgeCor) {
-            const container = document.getElementById(containerId);
+        // ------------------------------------------
+        // 4. RENDERIZAÇÃO E LÓGICA DO CARDÁPIO & KITS
+        // ------------------------------------------
+        function renderizarCardapio() {
+            const container = document.getElementById('grid-cardapio');
             container.innerHTML = '';
-            lista.forEach(p => {
+
+            cardapioCompleto.forEach(p => {
+                const badgeHTML = p.prontaEntrega
+                    ? `<div class="absolute top-4 left-4 bg-nutriaGreen text-nutriaBlue text-xs font-black px-4 py-1.5 rounded-full z-10 shadow-lg flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> PRONTA ENTREGA</div>`
+                    : ``;
+
                 container.innerHTML += `
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col border border-gray-100 group">
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="${p.imagem}" alt="${p.nome}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                            <div class="absolute top-4 left-4 ${badgeCor} text-white text-xs font-bold px-4 py-1.5 rounded-full z-10 shadow-md uppercase tracking-wider backdrop-blur-sm">${badgeTexto}</div>
+                    <div onclick="abrirPrato('${p.id}')" class="bg-white rounded-3xl shadow-md hover:shadow-xl overflow-hidden flex flex-col border border-gray-100 group card-hover cursor-pointer relative">
+                        ${badgeHTML}
+                        <div class="relative h-64 overflow-hidden bg-gray-100">
+                            <img src="${p.imagem}" alt="${p.nome}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://placehold.co/600x400/eeeeee/aaaaaa?text=Foto+em+breve'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4 right-4 text-white">
+                                <h3 class="text-xl font-extrabold leading-tight shadow-sm">${p.nome}</h3>
+                            </div>
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-extrabold text-nutriaBlue mb-2 leading-tight">${p.nome}</h3>
-                            <p class="text-gray-500 text-sm mb-6 flex-grow line-clamp-2">${p.descricao}</p>
-                            <div class="flex justify-between items-end">
+                            <p class="text-gray-500 text-sm mb-4 flex-grow line-clamp-2">${p.descricao}</p>
+
+                            <!-- Info de Peso e Macros -->
+                            <div class="flex flex-wrap gap-2 text-[11px] font-bold text-gray-500 mb-5 border-b border-gray-100 pb-4">
+                                <span class="bg-nutriaLight text-nutriaBlue px-2 py-1 rounded border border-nutriaGreen/30">⚖️ ${p.peso}</span>
+                                <span class="bg-gray-50 px-2 py-1 rounded">🔥 ${p.nutricao.kcal} kcal</span>
+                                <span class="bg-gray-50 px-2 py-1 rounded">🥩 ${p.nutricao.proteina}g Prot</span>
+                            </div>
+
+                            <div class="flex justify-between items-center mt-auto">
                                 <div>
-                                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1 tracking-wider">Por apenas</p>
-                                    <span class="text-3xl font-black text-nutriaGreen leading-none block">${formataMoeda(p.preco)}</span>
+                                    <span class="text-3xl font-black text-nutriaBlue tracking-tight">${formataMoeda(p.preco)}</span>
                                 </div>
-                                <button onclick="adicionarAoCarrinho('${p.id}')" class="bg-nutriaBlue text-white font-bold rounded-xl px-5 py-3 hover:bg-nutriaGreen transition shadow-md transform hover:-translate-y-1">Add</button>
+                                <button onclick="adicionarMarmitaAvulsa('${p.id}', event)" class="bg-nutriaLight text-nutriaGreen border-2 border-nutriaGreen font-black rounded-xl w-12 h-12 flex items-center justify-center hover:bg-nutriaGreen hover:text-white transition-all shadow-sm active:scale-95 z-20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+                                </button>
                             </div>
                         </div>
                     </div>`;
             });
         }
 
-        renderizarProdutos(semanaLotes, 'grid-novidades', 'Novo Lote ✨', 'bg-nutriaGreen/90 text-nutriaBlue');
-        renderizarProdutos(estoqueLotes, 'grid-estoque', 'Em Estoque 📦', 'bg-[#081E3F]/90 text-white');
-
-        function adicionarAoCarrinho(id) { carrinho[id] = (carrinho[id] || 0) + 1; atualizarUI(); }
-        function removerDoCarrinho(id) { if (carrinho[id]) { carrinho[id]--; if (carrinho[id] === 0) delete carrinho[id]; atualizarUI(); } }
-
-        function atualizarUI() {
-            const lista = document.getElementById('lista-carrinho');
-            const placeholder = document.getElementById('carrinho-vazio');
-            lista.innerHTML = '';
-            let total = 0;
-
-            for (const [id, qtde] of Object.entries(carrinho)) {
-                const p = todosProdutos.find(p => p.id === id);
-                if (!p) continue;
-                total += p.preco * qtde;
-                lista.innerHTML += `
-                    <li class="flex justify-between items-center border-b border-gray-100 pb-3">
-                        <div class="flex-grow pr-3">
-                            <p class="font-extrabold text-sm text-nutriaBlue">${p.nome}</p>
-                            <p class="text-xs text-gray-400 mt-1">${formataMoeda(p.preco)} cada</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="flex items-center bg-gray-50 border rounded-lg p-1">
-                                <button onclick="removerDoCarrinho('${id}')" class="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-red-500 hover:bg-red-50 rounded-md font-bold transition">-</button>
-                                <span class="w-6 text-sm font-black text-center">${qtde}</span>
-                                <button onclick="adicionarAoCarrinho('${id}')" class="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-md font-bold transition">+</button>
-                            </div>
-                            <span class="font-black text-sm text-right text-nutriaBlue">${formataMoeda(p.preco * qtde)}</span>
-                        </div>
-                    </li>`;
-            }
-            placeholder.classList.toggle('hidden', Object.keys(carrinho).length > 0);
-            document.getElementById('valor-total').textContent = formataMoeda(total);
-        }
-
-        // ========================================================
-        // 3. LÓGICA DO BLOG (Renderização e Modal)
-        // ========================================================
-        function renderizarBlog() {
-            const container = document.getElementById('grid-blog');
+        function renderizarKits() {
+            const container = document.getElementById('grid-kits');
             container.innerHTML = '';
-            artigosBlog.forEach(artigo => {
+            kitsData.forEach(k => {
                 container.innerHTML += `
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer group hover:-translate-y-2 transition-transform duration-300 border border-gray-100" onclick="abrirArtigo('${artigo.id}')">
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="${artigo.imagem}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold text-nutriaGreen uppercase tracking-wider">${artigo.tag}</span>
-                            <h3 class="text-xl font-extrabold text-nutriaBlue mt-2 mb-3 group-hover:text-nutriaGreen transition">${artigo.titulo}</h3>
-                            <p class="text-gray-500 text-sm line-clamp-3">${artigo.resumo}</p>
-                            <span class="text-sm font-bold text-nutriaBlue mt-4 inline-block group-hover:text-nutriaGreen transition">Ler artigo completo →</span>
-                        </div>
-                    </div>
-                `;
+                    <div class="bg-[#051124] rounded-3xl p-8 text-center text-white border-2 border-nutriaGreen/20 shadow-xl hover:border-nutriaGreen transition duration-300 card-hover flex flex-col">
+                        <h3 class="text-2xl font-black text-nutriaGreen mb-2">${k.nome}</h3>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow">${k.descricao}</p>
+                        <div class="text-4xl font-extrabold text-white mb-6">${formataMoeda(k.preco)}</div>
+                        <button onclick="abrirKit('${k.id}')" class="w-full bg-nutriaGreen text-nutriaBlue hover:bg-[#7ab135] font-extrabold py-3 rounded-xl transition shadow-[0_0_15px_rgba(137,197,63,0.3)]">
+                            Montar meu Kit
+                        </button>
+                    </div>`;
             });
         }
 
-        renderizarBlog();
+        renderizarCardapio();
+        renderizarKits();
 
-        function abrirArtigo(id) {
-            const artigo = artigosBlog.find(a => a.id === id);
-            if(artigo) {
-                document.getElementById('modal-body').innerHTML = `
-                    <img src="${artigo.imagem}" class="w-full h-64 object-cover rounded-t-3xl">
-                    <div class="p-8">
-                        <span class="text-sm font-bold text-nutriaGreen uppercase tracking-wider">${artigo.tag}</span>
-                        <h2 class="text-3xl font-extrabold text-nutriaBlue mt-2 mb-6">${artigo.titulo}</h2>
-                        <div class="text-gray-700 space-y-4 leading-relaxed">${artigo.conteudo}</div>
+        // ------------------------------------------
+        // 5. LÓGICA DE MODAIS (POP-UPS) E UX
+        // ------------------------------------------
+        function abrirPrato(id) {
+            const p = cardapioCompleto.find(x => x.id === id); if(!p) return;
+            const modal = document.getElementById('modal-prato'), content = document.getElementById('modal-prato-content');
+
+            const badgeProntaEntrega = p.prontaEntrega
+                ? `<span class="bg-nutriaGreen text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md inline-flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Pronta Entrega</span>`
+                : `<span class="bg-gray-200 text-gray-600 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2">Sob Encomenda</span>`;
+
+            document.getElementById('modal-prato-body').innerHTML = `
+                <div class="h-64 sm:h-80 w-full relative shrink-0 bg-gray-100">
+                    <img src="${p.imagem}" class="w-full h-full object-cover rounded-t-3xl" onerror="this.src='https://placehold.co/600x400/eeeeee/aaaaaa?text=Imagem'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+                </div>
+
+                <div class="px-6 sm:px-10 pb-10 relative -mt-10">
+                    <div class="mb-4 flex flex-wrap gap-2 items-center">
+                        ${badgeProntaEntrega}
+                        <span class="bg-nutriaBlue text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md inline-flex items-center">⚖️ ${p.peso}</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-nutriaBlue mt-2 mb-2 leading-tight">${p.nome}</h2>
+                    <p class="text-gray-500 text-lg mb-8 font-medium italic">${p.descricao}</p>
+
+                    <div class="mb-10">
+                        <h3 class="text-sm font-black text-gray-400 uppercase tracking-widest mb-3 border-b pb-2">A História do Prato</h3>
+                        <p class="text-gray-700 leading-relaxed text-justify text-[15px]">${p.historia}</p>
+                    </div>
+
+                    <div class="mb-8">
+                        <h3 class="text-sm font-black text-gray-400 uppercase tracking-widest mb-4 border-b pb-2">Informação Nutricional</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <div class="bg-[#F8FAFC] p-4 rounded-2xl border border-gray-100 flex flex-col items-center text-center"><span class="text-2xl mb-1">🔥</span><span class="text-xl font-black text-nutriaBlue">${p.nutricao.kcal}</span><span class="text-[10px] uppercase font-bold text-gray-400">Calorias</span></div>
+                            <div class="bg-[#F8FAFC] p-4 rounded-2xl border border-gray-100 flex flex-col items-center text-center"><span class="text-2xl mb-1">🥩</span><span class="text-xl font-black text-nutriaBlue">${p.nutricao.proteina}g</span><span class="text-[10px] uppercase font-bold text-gray-400">Proteínas</span></div>
+                            <div class="bg-[#F8FAFC] p-4 rounded-2xl border border-gray-100 flex flex-col items-center text-center"><span class="text-2xl mb-1">🌾</span><span class="text-xl font-black text-nutriaBlue">${p.nutricao.carbo}g</span><span class="text-[10px] uppercase font-bold text-gray-400">Carbo</span></div>
+                            <div class="bg-[#F8FAFC] p-4 rounded-2xl border border-gray-100 flex flex-col items-center text-center"><span class="text-2xl mb-1">🥑</span><span class="text-xl font-black text-nutriaBlue">${p.nutricao.gordura}g</span><span class="text-[10px] uppercase font-bold text-gray-400">Gorduras</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Botões de Ação (Avulso e Promoção 10x) -->
+                    <div class="flex flex-col gap-4 mt-8">
+                        <div class="bg-white p-6 rounded-3xl border-2 border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <div class="text-center sm:text-left">
+                                <span class="block text-xs font-bold text-gray-400 uppercase tracking-wider">Marmita Avulsa</span>
+                                <span class="text-3xl font-black text-nutriaBlue">${formataMoeda(p.preco)}</span>
+                            </div>
+                            <button onclick="adicionarMarmitaAvulsa('${p.id}'); fecharModal('modal-prato');" class="w-full sm:w-auto bg-gray-100 hover:bg-gray-200 text-nutriaBlue font-extrabold py-3 px-8 rounded-full transition shadow-sm">Adicionar 1 Unid.</button>
+                        </div>
+
+                        <div class="bg-nutriaLight p-6 rounded-3xl border-2 border-nutriaGreen flex flex-col sm:flex-row justify-between items-center gap-4 shadow-lg relative overflow-hidden">
+                            <div class="absolute -right-6 -top-6 w-24 h-24 bg-nutriaGreen opacity-20 rounded-full blur-2xl"></div>
+                            <div class="text-center sm:text-left relative z-10">
+                                <span class="block text-xs font-extrabold text-nutriaGreen uppercase tracking-wider mb-1">🔥 PROMO ESPECIAL 10x</span>
+                                <span class="text-3xl font-black text-nutriaBlue">R$ 180,00</span>
+                                <span class="text-xs text-gray-500 font-medium block">R$ 18,00 /unid. do sabor atual</span>
+                            </div>
+                            <button onclick="adicionarPromo10('${p.id}'); fecharModal('modal-prato');" class="w-full sm:w-auto bg-nutriaGreen hover:bg-[#7ab135] text-nutriaBlue font-extrabold py-4 px-8 rounded-full transition transform hover:scale-105 shadow-[0_4px_15px_rgba(137,197,63,0.4)] relative z-10">Levar 10 Unidades!</button>
+                        </div>
+                    </div>
+                </div>`;
+
+            abrirModal('modal-prato', 'modal-prato-content');
+        }
+
+        // Lógica de abertura do Kit (Montador de Sabores)
+        function abrirKit(kitId) {
+            const k = kitsData.find(x => x.id === kitId); if(!k) return;
+
+            let selectsHTML = '';
+            // Gera um <select> para cada "Lote" definido nas regras (ex: [5, 5, 4])
+            k.regras.forEach((quantidade, index) => {
+                let opcoes = cardapioCompleto.map(p => `<option value="${p.nome}">${p.nome}</option>`).join('');
+                selectsHTML += `
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold text-gray-600 mb-2">Lote ${index + 1} <span class="text-nutriaGreen">(${quantidade} unidades)</span></label>
+                        <select id="kit-sel-${index}" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-nutriaBlue focus:ring-2 focus:ring-nutriaGreen transition outline-none font-medium">
+                            <option value="" disabled selected>Escolha o sabor para estas ${quantidade} marmitas...</option>
+                            ${opcoes}
+                        </select>
                     </div>
                 `;
-                const modal = document.getElementById('modal-blog');
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+            });
+
+            document.getElementById('modal-kit-body').innerHTML = `
+                <div class="text-center mb-6">
+                    <span class="bg-nutriaLight text-nutriaGreen font-black px-3 py-1 rounded-full text-xs uppercase tracking-wider">Montador de Kit</span>
+                    <h2 class="text-3xl font-extrabold text-nutriaBlue mt-3">${k.nome}</h2>
+                    <p class="text-gray-500 mt-2">${k.descricao}</p>
+                </div>
+                <div class="bg-[#F8FAFC] p-6 rounded-2xl border border-gray-100 mb-6">
+                    ${selectsHTML}
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-100 pt-6">
+                    <div>
+                        <span class="block text-xs font-bold text-gray-400 uppercase tracking-wider">Valor do Kit</span>
+                        <span class="text-3xl font-black text-nutriaGreen">${formataMoeda(k.preco)}</span>
+                    </div>
+                    <button onclick="salvarKitNoCarrinho('${k.id}')" class="bg-nutriaBlue hover:bg-nutriaGreen text-white hover:text-nutriaBlue font-extrabold py-4 px-8 rounded-xl transition shadow-lg transform active:scale-95">Adicionar Kit</button>
+                </div>
+            `;
+            abrirModal('modal-kit', 'modal-kit-content');
+        }
+
+        function abrirModal(modalId, contentId) {
+            const modal = document.getElementById(modalId), content = document.getElementById(contentId);
+            content.scrollTop = 0;
+            modal.classList.remove('hidden'); modal.classList.add('flex');
+            setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); content.classList.add('scale-100'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const content = modal.querySelector('div[id$="-content"]');
+            modal.classList.add('opacity-0'); content.classList.remove('scale-100'); content.classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); modal.classList.remove('flex'); document.body.style.overflow = 'auto'; }, 300);
+        }
+
+        // ------------------------------------------
+        // 6. MOTOR DO CARRINHO (Suporta Itens, Kits e Promos)
+        // ------------------------------------------
+        let carrinhoItens = []; // Array de objetos para suportar itens customizados
+
+        function mostrarToast(msg = "✅ Item adicionado ao carrinho!") {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('opacity-0', 'translate-y-10');
+            setTimeout(() => toast.classList.add('opacity-0', 'translate-y-10'), 2500);
+        }
+
+        function adicionarMarmitaAvulsa(id, event) {
+            if(event) event.stopPropagation();
+            const p = cardapioCompleto.find(x => x.id === id);
+            // Busca se já tem uma avulsa do mesmo sabor
+            const itemExistente = carrinhoItens.find(i => i.produtoId === id && i.tipo === 'avulsa');
+            if(itemExistente) { itemExistente.qtde++; }
+            else { carrinhoItens.push({ idUnico: Date.now().toString(), produtoId: p.id, nome: p.nome, preco: p.preco, qtde: 1, tipo: 'avulsa', desc: '1 unidade' }); }
+            atualizarUI(); mostrarToast();
+        }
+
+        function adicionarPromo10(id) {
+            const p = cardapioCompleto.find(x => x.id === id);
+            carrinhoItens.push({ idUnico: Date.now().toString(), produtoId: p.id, nome: `🔥 PROMO 10x - ${p.nome}`, preco: 180.00, qtde: 1, tipo: 'promo', desc: '10 unidades deste sabor' });
+            atualizarUI(); mostrarToast('🔥 Promoção 10x adicionada!');
+        }
+
+        function salvarKitNoCarrinho(kitId) {
+            const k = kitsData.find(x => x.id === kitId);
+            let escolhas = [];
+            // Valida se todos os selects foram preenchidos
+            for(let i=0; i < k.regras.length; i++) {
+                const sel = document.getElementById(`kit-sel-${i}`);
+                if(!sel.value) { alert(`Por favor, escolha o sabor para o Lote ${i+1}.`); return; }
+                escolhas.push(`${k.regras[i]}x ${sel.value}`);
+            }
+
+            carrinhoItens.push({ idUnico: Date.now().toString(), produtoId: k.id, nome: `📦 ${k.nome}`, preco: k.preco, qtde: 1, tipo: 'kit', desc: escolhas.join(' | ') });
+            fecharModal('modal-kit'); atualizarUI(); mostrarToast('📦 Kit adicionado ao carrinho!');
+        }
+
+        function removerItemCarrinho(idUnico) {
+            const idx = carrinhoItens.findIndex(i => i.idUnico === idUnico);
+            if(idx > -1) {
+                if(carrinhoItens[idx].qtde > 1 && carrinhoItens[idx].tipo === 'avulsa') { carrinhoItens[idx].qtde--; }
+                else { carrinhoItens.splice(idx, 1); }
+            }
+            atualizarUI();
+        }
+
+        function atualizarUI() {
+            const lista = document.getElementById('lista-carrinho'), placeholder = document.getElementById('carrinho-vazio'), totalEl = document.getElementById('valor-total');
+            lista.innerHTML = ''; let total = 0;
+
+            carrinhoItens.forEach(item => {
+                total += item.preco * item.qtde;
+
+                // Botão de quantidade (Apenas avulsas permitem somar no + do carrinho. Kits e promo não, para evitar confusão)
+                let botoesQtde = item.tipo === 'avulsa'
+                    ? `<button onclick="adicionarMarmitaAvulsa('${item.produtoId}')" class="w-7 h-7 text-gray-500 hover:text-green-600 hover:bg-green-50 font-bold rounded-md transition">+</button>`
+                    : `<div class="w-7 h-7"></div>`; // Espaço vazio para manter alinhamento
+
+                lista.innerHTML += `
+                    <li class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-100 pb-4 gap-3">
+                        <div class="flex-grow">
+                            <p class="font-extrabold text-sm text-nutriaBlue leading-tight">${item.nome}</p>
+                            <p class="text-[11px] text-gray-400 mt-1 font-medium italic">${item.desc}</p>
+                        </div>
+                        <div class="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+                            <div class="flex items-center bg-gray-50 border rounded-lg p-1 shrink-0">
+                                <button onclick="removerItemCarrinho('${item.idUnico}')" class="w-7 h-7 text-gray-500 hover:text-red-500 hover:bg-red-50 font-bold rounded-md transition">-</button>
+                                <span class="w-6 text-sm font-black text-center text-nutriaBlue">${item.qtde}</span>
+                                ${botoesQtde}
+                            </div>
+                            <span class="font-black text-sm text-right text-nutriaBlue min-w-[80px]">${formataMoeda(item.preco * item.qtde)}</span>
+                        </div>
+                    </li>`;
+            });
+            placeholder.classList.toggle('hidden', carrinhoItens.length > 0);
+            totalEl.textContent = formataMoeda(total);
+        }
+
+        // ------------------------------------------
+        // 7. INTEGRAÇÕES: VIA CEP & WHATSAPP / BACKEND
+        // ------------------------------------------
+
+        // Auto-preenchimento de CEP
+        async function buscarCEP() {
+            const cepInput = document.getElementById('cliente-cep');
+            let cep = cepInput.value.replace(/\D/g, '');
+            if (cep.length === 8) {
+                cepInput.value = cep.substring(0,5) + '-' + cep.substring(5,8); // Formata visualmente
+                try {
+                    const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                    const data = await res.json();
+                    if (!data.erro) {
+                        const enderecoCompl = `${data.logradouro}, Número: , Bairro: ${data.bairro}, ${data.localidade} - ${data.uf}`;
+                        document.getElementById('cliente-endereco').value = enderecoCompl;
+                        document.getElementById('cliente-endereco').focus(); // Foca para o cliente digitar o número
+                    }
+                } catch (e) { console.log('Erro ao buscar CEP'); }
             }
         }
 
-        function fecharArtigo() {
-            const modal = document.getElementById('modal-blog');
-            modal.classList.add('opacity-0');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }, 300);
-        }
-
-        // ==========================================
-        // COMUNICAÇÃO SEGURA COM O BACKEND (NETLIFY FUNCTION)
-        // ==========================================
         async function enviarPedidoSeguro() {
             const nome = document.getElementById('cliente-nome').value.trim();
+            const cep = document.getElementById('cliente-cep').value.trim();
             const endereco = document.getElementById('cliente-endereco').value.trim();
             const pagamento = document.getElementById('cliente-pagamento').value;
-            const obs = document.getElementById('cliente-obs').value.trim();
 
-            if (Object.keys(carrinho).length === 0) return alert("Carrinho vazio!");
+            if (carrinhoItens.length === 0) return alert("Carrinho vazio!");
             if (!nome || !endereco) return alert("Preencha nome e endereço!");
 
             const btn = document.getElementById('btn-enviar');
             const btnHtml = btn.innerHTML;
-            btn.innerHTML = "Calculando e Gerando Link...";
-            btn.disabled = true;
-            btn.classList.add("opacity-70", "cursor-not-allowed");
+            btn.innerHTML = "Processando..."; btn.disabled = true; btn.classList.add("opacity-70", "cursor-not-allowed");
 
             try {
+                // Tenta enviar para o Netlify Backend (Se você tiver a function criada)
                 const response = await fetch('/.netlify/functions/gerarPedido', {
-                    method: 'POST',
-                    body: JSON.stringify({ carrinho, nome, endereco, pagamento, obs })
+                    method: 'POST', body: JSON.stringify({ carrinho: carrinhoItens, nome, cep, endereco, pagamento })
                 });
 
-                const data = await response.json();
+                if(!response.ok) throw new Error("Fallback para WhatsApp direto");
 
-                if (data.url) {
-                    window.open(data.url, '_blank');
-                } else {
-                    alert("Erro ao gerar pedido.");
-                }
+                const data = await response.json();
+                if (data.url) { window.open(data.url, '_blank'); return; }
             } catch (error) {
-                alert("Erro de conexão. Tente novamente.");
+                // FALLBACK PERFEITO: Se o backend falhar (ou não existir no ambiente de testes), monta o WhatsApp direto!
+                const numeroWhatsApp = "5511999999999"; // <-- COLOQUE SEU NÚMERO AQUI
+                let msg = `Olá equipe *NUTRIA*! 🌱\nGostaria de fazer um pedido:\n\n*🛒 RESUMO DO PEDIDO:*\n`;
+                let total = 0;
+
+                carrinhoItens.forEach(item => {
+                    msg += `▸ ${item.qtde}x ${item.nome} (${formataMoeda(item.preco * item.qtde)})\n`;
+                    if(item.tipo === 'kit') { msg += `   ↳ Sabores: ${item.desc}\n`; } // Adiciona os sabores do kit na mensagem
+                    total += item.preco * item.qtde;
+                });
+
+                msg += `\n*💰 TOTAL:* ${formataMoeda(total)}\n\n*🚚 ENTREGA:*\nNome: ${nome}\nCEP: ${cep}\nEndereço: ${endereco}\nPagamento: ${pagamento}\n`;
+                if(pagamento === 'Criptomoedas') { msg += `\n*Aguardando confirmação e a chave da Wallet (Bitcoin/USDT) para realizar a transferência!*`; }
+                else { msg += `\nAguardando confirmação!`; }
+
+                window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(msg)}`, '_blank');
             } finally {
-                btn.innerHTML = btnHtml;
-                btn.disabled = false;
-                btn.classList.remove("opacity-70", "cursor-not-allowed");
+                btn.innerHTML = btnHtml; btn.disabled = false; btn.classList.remove("opacity-70", "cursor-not-allowed");
             }
         }
+
+        // Renderiza Blog (Lógica reaproveitada)
+        function renderizarBlog() {
+            const container = document.getElementById('grid-blog'); container.innerHTML = '';
+            artigosBlog.forEach(art => {
+                container.innerHTML += `
+                    <article onclick="abrirArtigoBlog('${art.id}')" class="bg-white rounded-2xl shadow-md hover:shadow-xl overflow-hidden card-hover border border-gray-100 flex flex-col group cursor-pointer">
+                        <div class="relative h-48 overflow-hidden"><img src="${art.imagem}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute top-4 left-4 bg-nutriaGreen/90 backdrop-blur text-nutriaBlue font-extrabold text-xs px-3 py-1 rounded-full shadow-sm">${art.tag}</div></div>
+                        <div class="p-6 flex flex-col flex-grow"><div class="flex gap-4 text-xs font-semibold text-gray-400 mb-3"><span class="flex items-center gap-1">📅 ${art.data}</span><span class="flex items-center gap-1">⏳ ${art.tempoLeitura}</span></div>
+                        <h3 class="text-xl font-extrabold text-nutriaBlue mb-3 leading-tight group-hover:text-nutriaGreen transition-colors">${art.titulo}</h3><p class="text-gray-500 text-sm mb-5 line-clamp-2">${art.resumo}</p>
+                        <div class="mt-auto pt-4 border-t border-gray-100 font-bold text-nutriaBlue flex items-center gap-2 group-hover:gap-3 transition-all text-sm">Ler matéria completa &rarr;</div></div>
+                    </article>`;
+            });
+        }
+        function abrirArtigoBlog(id) {
+            const art = artigosBlog.find(a => a.id === id); if(!art) return;
+            document.getElementById('modal-blog-body').innerHTML = `
+                <div class="h-64 sm:h-80 w-full relative shrink-0"><img src="${art.imagem}" class="w-full h-full object-cover rounded-t-3xl"><div class="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent"></div></div>
+                <div class="px-6 sm:px-12 pb-12 relative -mt-16 sm:-mt-20">
+                    <div class="flex flex-wrap items-center gap-4 mb-5"><span class="bg-nutriaGreen text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md">${art.tag}</span><div class="flex gap-3 text-xs sm:text-sm font-semibold text-gray-500 bg-white/80 backdrop-blur px-3 py-1.5 rounded-full shadow-sm"><span>📅 ${art.data}</span><span class="text-gray-300">|</span><span>⏳ ${art.tempoLeitura}</span></div></div>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-nutriaBlue mt-2 mb-8 leading-tight">${art.titulo}</h2><div class="prose prose-lg text-gray-700 max-w-none text-justify">${art.conteudo}</div>
+                    <div class="mt-12 text-center pt-8"><button onclick="fecharModal('modal-blog')" class="bg-nutriaBlue hover:bg-nutriaGreen text-white font-extrabold py-4 px-10 rounded-full transition transform hover:-translate-y-1 shadow-[0_10px_20px_rgba(8,30,63,0.2)] w-full sm:w-auto text-lg">Voltar ao Site</button></div>
+                </div>`;
+            abrirModal('modal-blog', 'modal-blog-content');
+        }
+        renderizarBlog();
+
     </script>
 </body>
 </html>

@@ -1,80 +1,63 @@
-// Caminho do arquivo: netlify/functions/gerarPedido.js
-// Este código roda no servidor do Netlify. Invasores não têm acesso a este arquivo pelo navegador (F12).
-
-exports.handler = async (event, context) => {
-    // Apenas aceitar requisições do tipo POST
+// Esta é a função que vai correr no servidor da Netlify de forma segura
+exports.handler = async function(event, context) {
+    // Apenas permitimos pedidos do tipo POST (que é o que o nosso frontend envia)
     if (event.httpMethod !== "POST") {
-        return { statusCode: 405, body: "Method Not Allowed" };
+        return { statusCode: 405, body: "Método Não Permitido" };
     }
 
     try {
-        // Recebe os dados do front-end (Apenas ID e Quantidade)
+        // Recebe os dados enviados pelo index.html
         const data = JSON.parse(event.body);
-        const { carrinho, nome, endereco, pagamento, obs } = data;
+        const { carrinho, nome, cep, endereco, pagamento, obs } = data;
 
-        // ========================================================
-        // A FONTE DA VERDADE (CATÁLOGO SEGURO)
-        // Aqui ficam os preços verdadeiros. Se um invasor mudar 
-        // o preço no HTML via F12, este servidor irá ignorar e 
-        // cobrar o preço cadastrado aqui embaixo.
-        // ========================================================
-        const catalogoOficial = {
-            'nov-1': { nome: 'Strogonoff de Frango com Creme de Mandioquinha', preco: 18.90 },
-            'nov-2': { nome: 'Escondidinho de Carne Moída', preco: 18.90 },
-            'est-1': { nome: 'Karê de Frango com Arroz Japonês', preco: 25.90 },
-            'est-2': { nome: 'Tilápia Grelhada com Mix de Legumes', preco: 29.90 }
-        };
+        // ==========================================
+        // CONFIGURAÇÃO DO WHATSAPP DO RESTAURANTE
+        // ==========================================
+        const numeroWhatsApp = "5519974239183"; // <-- COLOCA O TEU NÚMERO AQUI COM DDD
 
-        // Formatação de moeda para o texto do WhatsApp
-        const formatarReal = (valor) => `R$ ${valor.toFixed(2).replace('.', ',')}`;
+        // Função segura para formatar moeda no backend (evita erros de região no servidor)
+        const formataMoeda = (v) => 'R$ ' + v.toFixed(2).replace('.', ',');
 
-        let totalSeguro = 0;
-        let mensagem = `Olá equipe *NUTRIA*! 🌱\nGostaria de fazer um pedido:\n\n*RESUMO DO PEDIDO:*\n`;
+        // Constrói a mensagem
+        let msg = `Olá equipe *NUTRIA*! 🌱\nGostaria de fazer um pedido:\n\n*🛒 RESUMO DO PEDIDO:*\n`;
+        let total = 0;
 
-        // O servidor calcula o total item a item
-        for (const [id, quantidade] of Object.entries(carrinho)) {
-            const produto = catalogoOficial[id];
-            
-            // Se o ID enviado não existe no catálogo oficial, é ignorado (evita ataques)
-            if (produto) {
-                const subtotal = produto.preco * quantidade;
-                totalSeguro += subtotal;
-                mensagem += `▸ ${quantidade}x ${produto.nome} (${formatarReal(subtotal)})\n`;
+        carrinho.forEach(item => {
+            msg += `▸ ${item.qtde}x ${item.nome} (${formataMoeda(item.preco * item.qtde)})\n`;
+            // Se for um kit, inclui os sabores que o cliente escolheu
+            if(item.tipo === 'kit') {
+                msg += `   ↳ Sabores: ${item.desc}\n`;
             }
+            total += item.preco * item.qtde;
+        });
+
+        msg += `\n*💰 TOTAL:* ${formataMoeda(total)}\n\n*🚚 ENTREGA:*\nNome: ${nome}\nCEP: ${cep}\nEndereço: ${endereco}\nPagamento: ${pagamento}\n`;
+
+        if (obs && obs.trim() !== "") {
+            msg += `Obs: ${obs}\n`;
         }
 
-        // Validação contra carrinho forjado zerado
-        if (totalSeguro === 0) {
-            return { statusCode: 400, body: JSON.stringify({ error: "Carrinho inválido." }) };
+        if (pagamento === 'Criptomoedas') {
+            msg += `\n*Aguardando confirmação e a chave da Wallet (Bitcoin/USDT) para realizar a transferência!*`;
+        } else {
+            msg += `\nAguardando confirmação!`;
         }
 
-        mensagem += `\n*VALOR TOTAL:* ${formatarReal(totalSeguro)}\n\n`;
-        mensagem += `*DADOS DE ENTREGA:*\n`;
-        mensagem += `Nome: ${nome}\nEndereço: ${endereco}\nForma de Pagamento: ${pagamento}\n`;
-        
-        if (obs && obs.trim() !== '') {
-            mensagem += `Observações: ${obs}\n`;
-        }
-        mensagem += `\nAguardando confirmação! Obrigado!`;
+        // Gera o link final do WhatsApp
+        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(msg)}`;
 
-        // Pega o número de WhatsApp oculto nas Variáveis de Ambiente do Netlify.
-        // Se não existir, usa o padrão. Ninguém que aperta F12 consegue ler o process.env.
-        const numeroWhatsApp = process.env.WHATSAPP_NUMERO || "5519974239183";
-        
-        // Gera a URL final blindada
-        const urlSegura = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-
-        // Retorna a URL para o Front-end redirecionar o cliente
+        // Responde ao teu site com sucesso e entrega o URL gerado
         return {
             statusCode: 200,
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ url: urlSegura })
+            body: JSON.stringify({ url: url })
         };
 
     } catch (error) {
-        console.error("Erro na Serverless Function:", error);
-        return { statusCode: 500, body: JSON.stringify({ error: "Erro interno do servidor." }) };
+        // Se algo correr mal, o site não quebra, apenas recebe este erro
+        console.error("Erro no backend:", error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: 'Erro ao processar o pedido no servidor.' })
+        };
     }
 };
